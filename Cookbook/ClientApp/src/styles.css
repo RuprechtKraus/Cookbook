@@ -1,16 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+* 
+{
+  margin: 0;
+  padding: 0;
 }
 
-code {
-  color: #e01a76;
+body 
+{  
+  background-color: #FEFEFB;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.container
+{
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.background-wave
+{
+  position: absolute;
+
+  width: 1745.08px;
+  height: 905.67px;
+  left: -204px;
+  top: 631.25px;
 }
