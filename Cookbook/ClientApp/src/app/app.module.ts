@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    RecipesComponent,
+    RecipeCardComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: MainComponent }
+      { path: '', component: MainComponent },
+      { path: 'recipes', component: RecipesComponent }
     ])
   ],
   providers: [],

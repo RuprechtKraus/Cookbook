@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,34 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ClientApp';
+  currentLink;
+
+  constructor(
+    private _router: Router
+  ) {
+    
+  }
+
+  onRouteActivate(): void {
+    switch(this._router.url)
+    {
+      case '/':
+        this.currentLink = document.getElementById('main-page-link');
+        break;
+      case '/recipes':
+        this.currentLink = document.getElementById('recipes-page-link');
+        break;
+      case '/favorites':
+        this.currentLink = document.getElementById('favorites-page-link');
+        break;
+    }
+    
+    if (this.currentLink !== null)
+      this.currentLink.classList.add('nav-bar__active');
+  }
+
+  onRouteDeactivate(): void {
+    if (this.currentLink !== null)
+      this.currentLink.classList.remove('nav-bar__active');
+  }
 }

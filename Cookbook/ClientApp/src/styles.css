@@ -5,22 +5,220 @@
 }
 
 body 
-{  
+{
   background-color: #FEFEFB;
 }
 
 .container
 {
-  width: 1200px;
+  max-width: 1440px;
+
   margin: 0 auto;
+  padding: 0 120px;
+  
+  box-sizing: border-box;
 }
+
+/* Background waves */
+
+.wave-container
+{
+  position: absolute;
+  max-width: 1440px;
+
+  left: 220px;
+  z-index: -999;
+}
+
+.wave-1
+{
+  top: 495px;
+}
+
+.wave-2
+{
+  top: 1430px;
+}
+
+/* Buttons */
 
 .background-wave
 {
-  position: absolute;
+  position: relative;
+}
 
-  width: 1745.08px;
-  height: 905.67px;
-  left: -204px;
-  top: 631.25px;
+.button-filled
+{
+  background: #FDB100;
+  border-radius: 16px;
+  box-sizing: border-box;
+  border-style: none;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+
+  min-height: 50px;
+  min-width: 100px;
+
+  color: #FFFFFF;
+}
+
+.button-filled:hover
+{
+  background: #e7a200;
+}
+
+.button-outlined
+{
+  border: 1px solid #FDB100;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: transparent;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+
+  text-align: center;
+
+  color: #FDB100;
+
+  min-height: 50px;
+  min-width: 100px;
+}
+
+.button-outlined:hover
+{
+  background-color: #FDB100;
+  color: #FFFFFF;
+}
+
+/* Search */
+
+.recipe-search_title
+{
+  margin-bottom: 16px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 51px;
+  text-align: center;
+
+  color: #25292D;
+}
+
+.recipe-search_desc
+{
+  margin-bottom: 64px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 32px;
+
+  text-align: center;
+  font-feature-settings: 'case' on;
+
+  color: #4A525A;
+}
+
+.recipe-search
+{
+  max-width: 884px;
+  margin: 0 auto;
+}
+
+.search-form
+{
+  display: flex;
+
+  margin-bottom: 24px;
+}
+
+.search-field
+{
+  height: 73px;
+
+  flex-grow: 4;
+
+  padding-left: 32px;
+  margin-right: 16px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 8px 42px rgba(34, 39, 47, 0.04);
+  border-radius: 16px;
+  border-style: none;
+  box-sizing: border-box;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: capitalize;
+
+  color: rgba(37, 41, 45, 0.5)
+}
+
+.search-field:focus
+{
+  outline: none;
+}
+
+.search-btn
+{
+  height: 73px;
+
+  flex-grow: 1;
+
+  justify-content: center;
+
+  background: #FDB100;
+  border-radius: 16px;
+  border-style: none;
+  box-sizing: border-box;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: capitalize;
+
+  color: #FFFFFF;
+}
+
+.search-btn:hover
+{
+  background-color: #e7a200;
+}
+
+.tag
+{
+  margin-right: 15px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: #808080;
+}
+
+.tag:hover
+{
+  color: #535353;
+  text-decoration: underline;
 }
