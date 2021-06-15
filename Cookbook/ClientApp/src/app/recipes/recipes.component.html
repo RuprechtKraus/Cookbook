@@ -22,7 +22,7 @@
 
 <section class="categories-section">
   <div class="categories-list">
-    <div class="category" *ngFor="let category of categories | async">
+    <div class="category" *ngFor="let category of categories">
       <div class="category_icon" [style.background-image]="'url(' + category.iconUrl + ')'"></div>
       <h2 class="category_title">{{ category.title }}</h2>
     </div>
@@ -48,7 +48,7 @@
 </section>
 
 <section class="recipes-list">
-  <app-recipe-card *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-card>
+  <app-recipe-card class="recipe-card__clickable" *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-card>
 </section>
 <div class="load-more-wrapper">
   <button class="button-outlined load-more-btn" type="submit">Загрузить еще</button>

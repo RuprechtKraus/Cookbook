@@ -11,6 +11,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     NavBarComponent,
     FooterComponent,
     RecipesComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

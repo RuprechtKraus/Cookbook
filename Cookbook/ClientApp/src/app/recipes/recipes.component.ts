@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { Recipe } from '../interfaces/recipe';
+import { Category } from '../interfaces/category';
 import { CategoriesService } from '../categories.service';
 import { RecipesService } from '../recipes.service';
 
@@ -11,7 +12,7 @@ import { RecipesService } from '../recipes.service';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  categories = this._categoriesService.getCategories();
+  categories?: Category[] = [];
   recipes?: Recipe[] = [];
   searchForm = this._formBuilder.group({
     searchText: ''
@@ -24,6 +25,7 @@ export class RecipesComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.categories = await this._categoriesService.getCategories();
     this.recipes = await this._recipesService.getRecipes();
   }
 

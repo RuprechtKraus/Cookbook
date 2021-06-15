@@ -1,5 +1,7 @@
 @import url('../../assets/styles/categories.css');
 
+/* General */
+
 .back-btn
 {
   height: 22px;
@@ -20,6 +22,17 @@
 .recipes-list
 {
   margin-bottom: 65px;
+}
+
+.recipe-card__clickable ::ng-deep .recipe-card
+{
+  transition: all .2s ease-in-out;
+}
+
+.recipe-card__clickable:hover ::ng-deep .recipe-card
+{
+  box-shadow: 0 0 10px darkgrey;
+  transform: scale(1.01);
 }
 
 /* Recipes header */

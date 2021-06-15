@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Category } from './interfaces/category';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +13,7 @@ export class CategoriesService {
   ) { }
 
   getCategories() {
-    return this._http.get<{iconUrl: string, title: string, desc: string}[]>('../assets/data/categories.json');
+    return this._http.get<Category[]>('../assets/data/categories.json').toPromise();
   }
 
 }
