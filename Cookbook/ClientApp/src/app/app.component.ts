@@ -8,7 +8,7 @@ import { Router } from '@angular/router'
 })
 export class AppComponent {
   title = 'ClientApp';
-  currentLink;
+  currentLink? = null;
 
   constructor(
     private _router: Router
@@ -28,14 +28,16 @@ export class AppComponent {
       case '/favorites':
         this.currentLink = document.getElementById('favorites-page-link');
         break;
+      default:
+        this.currentLink = null;
+        break;
     }
-    
-    if (this.currentLink !== null)
+    if (this.currentLink !== null && this.currentLink)
       this.currentLink.classList.add('nav-bar__active');
   }
 
   onRouteDeactivate(): void {
-    if (this.currentLink !== null)
+    if (this.currentLink !== null && this.currentLink)
       this.currentLink.classList.remove('nav-bar__active');
   }
 }

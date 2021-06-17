@@ -5,6 +5,7 @@ import { Recipe } from '../interfaces/recipe';
 import { Category } from '../interfaces/category';
 import { CategoriesService } from '../categories.service';
 import { RecipesService } from '../recipes.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipes',
@@ -24,9 +25,11 @@ export class RecipesComponent implements OnInit {
     private _formBuilder: FormBuilder
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    this.categories = await this._categoriesService.getCategories();
-    this.recipes = await this._recipesService.getRecipes();
+  ngOnInit() {
+    this._categoriesService.getCategories()
+      .subscribe((categories: Category[]) => this.categories = categories);
+    this._recipesService.getRecipes().
+      subscribe((recipes: Recipe[]) => this.recipes = recipes);
   }
 
   onSubmit(): void {

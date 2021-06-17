@@ -20,8 +20,9 @@ export class MainComponent implements OnInit {
     private _formBuilder: FormBuilder
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    this.categories = await this._categoriesService.getCategories();
+  ngOnInit() {
+    this._categoriesService.getCategories()
+      .subscribe((categories: Category[]) => this.categories = categories);
   }
 
   onSubmit(): void {

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms'
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +10,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
-import { DetailsComponent } from './details/details.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -21,17 +20,13 @@ import { DetailsComponent } from './details/details.component';
     FooterComponent,
     RecipesComponent,
     RecipeCardComponent,
-    DetailsComponent
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule.forRoot([
-      { path: '', component: MainComponent },
-      { path: 'recipes', component: RecipesComponent }
-    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

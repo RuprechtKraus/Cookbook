@@ -145,8 +145,13 @@
 
 .recipe-card_desc
 {
-  max-width: 571px;
+  height: 141px;
+  width: 687px;
   margin-bottom: 43px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .recipe-card_title
