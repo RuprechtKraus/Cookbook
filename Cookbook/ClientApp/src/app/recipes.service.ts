@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Recipe } from './interfaces/recipe';
+
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriesService {
+export class RecipesService {
 
   constructor(
     private _http: HttpClient
   ) { }
 
-  getCategories() {
-    return this._http.get<{iconUrl: string, title: string, desc: string}[]>('../assets/data/categories.json');
+  getRecipes() {
+    return this._http.get<Recipe[]>('../assets/data/recipes.json').toPromise();
   }
-
 }

@@ -1,0 +1,55 @@
+<div class="wave-container wave-1">
+  <img class="background-wave" src="assets/images/wave-1.png" alt="background-wave">
+</div>
+
+<div class="wave-container wave-2">
+  <img class="background-wave" src="assets/images/wave-2.png" alt="background-wave">
+</div>
+
+<div class="back-btn">
+  <!-- Место для навигационной кнопки "назад" -->
+</div>
+
+<div class="recipes-title_container">
+  <span class="recipes_title">Рецепты</span>
+  <button class="button-filled add-recipe-btn">
+    <div class="add-recipe-btn_inner">
+      <img src="../../assets/icons/plus.svg">
+      Добавить рецепт
+    </div>
+  </button>
+</div>
+
+<section class="categories-section">
+  <div class="categories-list">
+    <div class="category" *ngFor="let category of categories | async">
+      <div class="category_icon" [style.background-image]="'url(' + category.iconUrl + ')'"></div>
+      <h2 class="category_title">{{ category.title }}</h2>
+    </div>
+  </div>
+</section>
+
+<section class="recipe-search">
+  <h1 class="recipe-search_title">Поиск рецепта</h1>
+  <div class="search-form_wrapper">
+    <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <input id="search" class="search-field" type="search" placeholder="Название блюда...." formControlName="searchText">
+      <button class="search-btn" type="submit">Поиск</button>
+    </form>
+    <div class="tags">
+      <a class="tag">Мясо</a>
+      <a class="tag">Деликатесы</a>
+      <a class="tag">Пироги</a>
+      <a class="tag">Рыба</a>
+      <a class="tag">Пост</a>
+      <a class="tag">Пасха2021</a>
+    </div>
+  </div>
+</section>
+
+<section class="recipes-list">
+  <app-recipe-card *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe-card>
+</section>
+<div class="load-more-wrapper">
+  <button class="button-outlined load-more-btn" type="submit">Загрузить еще</button>
+</div>
