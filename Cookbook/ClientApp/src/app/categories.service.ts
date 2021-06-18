@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Category } from './interfaces/category';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +13,8 @@ export class CategoriesService {
     private _http: HttpClient
   ) { }
 
-  getCategories() {
-    return this._http.get<{iconUrl: string, title: string, desc: string}[]>('../assets/data/categories.json');
+  getCategories(): Observable<Category[]> {
+    return this._http.get<Category[]>('../assets/data/categories.json');
   }
 
 }

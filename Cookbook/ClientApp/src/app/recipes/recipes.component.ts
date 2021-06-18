@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { Recipe } from '../interfaces/recipe';
+import { Category } from '../interfaces/category';
 import { CategoriesService } from '../categories.service';
 import { RecipesService } from '../recipes.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipes',
@@ -11,8 +13,8 @@ import { RecipesService } from '../recipes.service';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  categories = this._categoriesService.getCategories();
-  recipes?: Recipe[] = [];
+  categories: Category[] = [];
+  recipes: Recipe[] = [];
   searchForm = this._formBuilder.group({
     searchText: ''
   });
@@ -23,8 +25,11 @@ export class RecipesComponent implements OnInit {
     private _formBuilder: FormBuilder
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    this.recipes = await this._recipesService.getRecipes();
+  ngOnInit() {
+    this._categoriesService.getCategories()
+      .subscribe((categories: Category[]) => this.categories = categories);
+    this._recipesService.getRecipes().
+      subscribe((recipes: Recipe[]) => this.recipes = recipes);
   }
 
   onSubmit(): void {

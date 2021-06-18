@@ -37,7 +37,7 @@
 
   <div class="categories-list">
 
-    <div class="category" *ngFor="let category of categories | async">
+    <div class="category" *ngFor="let category of categories">
       <div class="category_icon" [style.background-image]="'url(' + category.iconUrl + ')'"></div>
       <h2 class="category_title">{{ category.title }}</h2>
       <p class="category_desc">{{ category.desc }}</p>
