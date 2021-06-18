@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  categories?: Category[] = [];
-  recipes?: Recipe[] = [];
+  categories: Category[] = [];
+  recipes: Recipe[] = [];
   searchForm = this._formBuilder.group({
     searchText: ''
   });

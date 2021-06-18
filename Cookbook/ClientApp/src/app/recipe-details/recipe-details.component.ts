@@ -34,7 +34,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   getRecipeDetails(): void {
     this._recipeService.getRecipeDetails()
-      .subscribe((details: RecipeDetails) => {this.details = details[0]; console.log(this.details);});
+      .subscribe((details: RecipeDetails) => this.details = details[0]);
   }
 
 }

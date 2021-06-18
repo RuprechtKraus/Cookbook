@@ -1,26 +1,5 @@
 /* Recipe preview */
 
-.recipe-details_top {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-
-.recipe-details_buttons {
-  display: flex;
-  justify-content: center;
-}
-
-.recipe-details_title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: bold;
-  font-size: 42px;
-  line-height: 62px;
-
-  color: #25292D;
-}
-
 .delete-recipe-btn {
   width: 60px;
   height: 60px;
@@ -43,21 +22,6 @@
   filter: brightness(0) invert(1);
 }
 
-.edit-recipe-btn {
-  width: 278px;
-  height: 60px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.edit-icon {
-  height: 18px;
-  width: 18px;
-  margin-right: 21px;
-}
-
 /* Recipe container */
 
 .recipe-container {
@@ -73,6 +37,25 @@
 .recipe-details_steps {
   width: 100%;
   max-width: 790px;
+}
+
+.bon-appetit {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 40px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+
+  text-transform: capitalize;
+
+  color: #FDB100;
+
+  opacity: 0.5;
 }
 
 /* Recipe ingredients */

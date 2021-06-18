@@ -1,14 +1,14 @@
 <div *ngIf="recipe">
-  <div class="recipe-details_top">
-    <h1 class="recipe-details_title">
+  <div class="page-header">
+    <h1 class="page-header_title">
       {{ recipe.title }}
     </h1>
-    <div class="recipe-details_buttons">
+    <div class="page-header_buttons">
       <button class="button-outlined delete-recipe-btn">
         <object class="delete-icon" data="../../assets/icons/ic-trash.svg" type="image/svg+xml"></object>
       </button>
-      <button class="button-filled edit-recipe-btn">
-        <object class="edit-icon" data="../../assets/icons/ic-pencil.svg" type="image/svg+xml"></object>
+      <button class="button-filled page-header_main-button">
+        <object class="page-header_main-button-icon" data="../../assets/icons/ic-pencil.svg" type="image/svg+xml"></object>
         Редактировать
       </button>
     </div>
@@ -37,6 +37,7 @@
           {{ step }}
         </p>
       </div>
+      <div class="bon-appetit">Приятного аппетита!</div>
     </div>
   </div>
 </div>

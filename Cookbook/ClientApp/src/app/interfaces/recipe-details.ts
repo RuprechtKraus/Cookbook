@@ -1,9 +1,10 @@
+interface IngredientsForCategory {
+  title: string;
+  list: string[];
+} 
+
 export interface RecipeDetails {
-  categories:
-  {
-    title: string;
-    list: string[];
-  }[],
+  categories: IngredientsForCategory[],
   ingredients: string[];
   steps: string[];
 }

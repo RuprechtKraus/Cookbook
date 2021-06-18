@@ -19,6 +19,7 @@ body
   flex-direction: column;
 
   max-width: 1440px;
+  width: 100%;
 
   margin: 0 auto;
   padding: 0 120px;
@@ -228,4 +229,41 @@ body
 {
   color: #535353;
   text-decoration: underline;
+}
+
+/* Pages' header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.page-header_buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.page-header_main-button {
+  width: 278px;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-header_main-button-icon {
+  height: 18px;
+  width: 18px;
+  margin-right: 21px;
+}
+
+.page-header_title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 62px;
+
+  color: #25292D;
 }
