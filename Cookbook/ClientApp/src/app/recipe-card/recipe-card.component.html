@@ -5,12 +5,12 @@
       <div class="ellipsis-text">@{{ recipe.author }}</div>
     </div>
   </div>
-  <div class="recipe-card_right">
+  <div class="recipe-card-right">
 
     <div class="recipe-card_top">
       <div class="recipe-card_tags">
         <div *ngFor="let tag of recipe.tags" class="recipe-card_tag">
-          <div class="ellipsis-text">{{ tag }}</div>
+          <span class="ellipsis-text">{{ tag }}</span>
         </div>
       </div>
       <div class="recipe-card_btns">

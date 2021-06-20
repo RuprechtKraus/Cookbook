@@ -8,3 +8,61 @@
     </button>
   </div>
 </div>
+
+<div class="recipe-blank">
+  <div class="recipe-blank_pic-upload">
+    <div class="upload-area">
+      <object class="upload-area_icon" data="../../assets/icons/ic-upload.svg" type="image/svg+xml"></object>
+      <div class="upload-area_text">Загрузите фото готового блюда</div>
+    </div>
+  </div>
+
+  <div class="recipe-blank-right">
+    <form class="recipe-form" [formGroup]="recipeForm">
+      <input class="title-field blank-field" [required]="true" 
+        placeholder="Название рецепта" formControlName="title">
+      <textarea class="desc-field blank-field" [required]="true"
+        placeholder="Краткое описание рецепта (150 символов)" formControlName="desc"></textarea>
+
+      <div class="tag-field blank-field">
+        <mat-chip-list class="tag-list" #tagList>
+          <mat-chip class="tag" *ngFor="let tag of tags" title="{{tag}}"
+            (removed)="removeTag(tag)">
+            <span class="ellipsis-text">{{ tag }}</span>
+            <mat-icon class="remove-tag-icon" matChipRemove>cancel</mat-icon>
+          </mat-chip>  
+          
+        </mat-chip-list>
+        <input class="tag-input" placeholder="Добавить теги" [maxLength]="20"
+                 [matChipInputFor]="tagList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 (matChipInputTokenEnd)="addTag($event)">
+      </div>
+
+      <div class="info-wrapper">
+        <mat-form-field class="time-field" appearance="outline">
+          <mat-select [(value)]="selectedTime" placeholder="Выберите время">
+            <mat-option *ngFor="let option of timeOptions" value="{{ option.value }}">
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <div class="time-field blank-field"> 
+          <input class="time-input" type="text" placeholder="Время готовки">
+          <select class="time-input" [(ngModel)]="selectedTime">
+            <option *ngFor="let option of timeOptions" [ngValue]="option.value">
+              {{ option.viewValue }}
+            </option>
+          </select>
+        </div> -->
+        <!-- <ng-select class="custom">
+          <ng-option *ngFor="let option of timeOptions">{{ option.viewValue }}</ng-option>
+        </ng-select> -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="recipe-ingredients-blank">
+  
+</div>

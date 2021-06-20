@@ -1,3 +1,5 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 * 
 {
   margin: 0;
@@ -25,6 +27,13 @@ body
   padding: 0 120px;
   
   box-sizing: border-box;
+}
+
+.ellipsis-text
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Background waves */
@@ -232,18 +241,21 @@ body
 }
 
 /* Pages' header */
-.page-header {
+.page-header 
+{
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
 }
 
-.page-header_buttons {
+.page-header_buttons 
+{
   display: flex;
   justify-content: center;
 }
 
-.page-header_main-button {
+.page-header_main-button 
+{
   width: 278px;
   height: 60px;
 
@@ -252,13 +264,15 @@ body
   align-items: center;
 }
 
-.page-header_main-button-icon {
+.page-header_main-button-icon 
+{
   height: 18px;
   width: 18px;
   margin-right: 21px;
 }
 
-.page-header_title {
+.page-header_title 
+{
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: bold;
