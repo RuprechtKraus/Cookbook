@@ -19,7 +19,7 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IngregientsBlankComponent } from './ingregients-blank/ingregients-blank.component';
+import { IngredientsBlankComponent } from './ingredients-blank/ingredients-blank.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { IngregientsBlankComponent } from './ingregients-blank/ingregients-blank
     RecipeCardComponent,
     RecipeDetailsComponent,
     RecipeCreateComponent,
-    IngregientsBlankComponent
+    IngredientsBlankComponent
   ],
   imports: [
     BrowserModule,

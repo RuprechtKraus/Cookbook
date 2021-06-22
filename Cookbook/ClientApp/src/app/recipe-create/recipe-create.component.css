@@ -216,7 +216,137 @@
   outline: none;
 }
 
-/* ng-select.custom
+/* Steps and ingredients */
+
+.steps-and-ingredients
 {
-  border-style: none;
-} */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Ingredients */
+
+.ingredients-title
+{  
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+
+  text-transform: capitalize;
+
+  color: #4A525A;
+}
+
+.ingredients-container
+{
+  width: 100%;
+  max-width: 380px;
+
+  margin-bottom: 40px;
+}
+
+.ingredients-blank
+{
+  margin-bottom: 20px;
+}
+
+/* Steps */
+
+.steps-container
+{
+  max-width: 729px;
+  width: 100%;
+}
+
+.step
+{
+  margin-bottom: 40px;
+  padding: 50px 70px 70px 70px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 16px 72px rgba(34, 39, 47, 0.05);
+  border-radius: 24px;
+}
+
+.step-top
+{
+  margin-bottom: 21px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-index
+{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 30px;
+
+  display: flex;
+  align-items: center;
+
+  color: #4A525A;
+}
+
+.step-desc
+{
+  height: 166px;
+  width: 100%;
+
+  padding: 11px 24px;
+
+  resize: none;
+
+  border: 1px solid rgba(145, 150, 161, 0.4);
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: rgba(37, 41, 45, 0.5);
+}
+
+.step-desc:focus
+{
+  outline: none;
+}
+
+.add-wrapper
+{
+  display: flex;
+  justify-content: center;
+}
+
+/* Buttons */
+
+.add-blank
+{
+  width: 380px;
+  height: 60px;
+
+  border: 1px solid #FDB100;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.add-icon
+{
+  max-height: 14px;
+  max-width: 14px;
+
+  margin-right: 54px;
+}
+
+.add-blank:hover .add-icon
+{
+  filter: brightness(0) invert(1);
+}

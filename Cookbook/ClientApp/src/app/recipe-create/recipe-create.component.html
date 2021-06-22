@@ -3,7 +3,7 @@
     Добавить новый рецепт
   </h1>
   <div class="page-header_buttons">
-    <button class="button-filled page-header_main-button">
+    <button class="button-filled page-header_main-button" (click)="onSubmit()">
       Опубликовать
     </button>
   </div>
@@ -18,11 +18,11 @@
   </div>
 
   <div class="recipe-blank-right">
-    <form class="recipe-form" [formGroup]="recipeForm">
+    <div class="recipe-form">
       <input class="title-field blank-field" [required]="true" 
-        placeholder="Название рецепта" formControlName="title">
+        placeholder="Название рецепта">
       <textarea class="desc-field blank-field" [required]="true"
-        placeholder="Краткое описание рецепта (150 символов)" formControlName="desc"></textarea>
+        placeholder="Краткое описание рецепта (150 символов)"></textarea>
 
       <div class="tag-field blank-field">
         <mat-chip-list class="tag-list" #tagList>
@@ -30,8 +30,7 @@
             (removed)="removeTag(tag)">
             <span class="ellipsis-text">{{ tag }}</span>
             <mat-icon class="remove-tag-icon" matChipRemove>cancel</mat-icon>
-          </mat-chip>  
-          
+          </mat-chip>         
         </mat-chip-list>
         <input class="tag-input" placeholder="Добавить теги" [maxLength]="20"
                  [matChipInputFor]="tagList"
@@ -59,10 +58,43 @@
           <ng-option *ngFor="let option of timeOptions">{{ option.viewValue }}</ng-option>
         </ng-select> -->
       </div>
-    </form>
+    </div>
   </div>
 </div>
 
-<div class="recipe-ingredients-blank">
-  
+<div class="steps-and-ingredients">
+  <div>
+    <div class="ingredients-title">
+      Ингридиенты
+    </div>
+    <div class="ingredients-container">
+      <app-ingredients-blank class="ingredient-blank"
+        *ngFor="let ingredient of ingredients"
+        (remove)="removeIngredientsCategory($event)"
+        [ingredient]="ingredient"
+        [removable]="ingredients.length > 1"></app-ingredients-blank>
+    </div>
+    <button class="button-outlined add-blank" (click)="addIngredientsCategory()">
+      <object class="add-icon" data="../../assets/icons/plus.svg" type="image/svg+xml"></object>
+      Добавить заголовок
+    </button>
+  </div>
+
+  <div class="steps-container">
+    <div class="step" *ngFor="let step of steps; let i=index; trackBy:trackByIndex">
+      <div class="step-top">
+        <div class="step-index">
+          Шаг {{ i+1 }}
+        </div>
+        <button class="remove-btn" *ngIf="stepsRemovable" (click)="removeStep(step)"></button>
+      </div>
+      <textarea [(ngModel)]="steps[i]" class="step-desc" placeholder="Описание шага"></textarea>
+    </div>
+    <div class="add-wrapper">
+      <button class="button-outlined add-blank" (click)="addStep()">
+        <object class="add-icon" data="../../assets/icons/plus.svg" type="image/svg+xml"></object>
+        Добавить заголовок
+      </button>
+    </div>   
+  </div>
 </div>

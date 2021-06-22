@@ -281,3 +281,23 @@ body
 
   color: #25292D;
 }
+
+/* Remove button (cross) */
+
+.remove-btn
+{
+  background-image: url("assets/icons/cross.svg");
+  background-color: transparent;
+
+  height: 14px;
+  width: 14px;
+
+  border: none;
+
+  transition: transform .2s ease-in-out;
+}
+
+.remove-btn:hover
+{
+  transform: scale(1.2);
+}

@@ -35,6 +35,11 @@
   transform: scale(1.01);
 }
 
+.page-header_main-button-icon
+{
+  filter: brightness(0) invert(1);
+}
+
 /* Categories */
 
 .categories-section

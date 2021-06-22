@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Recipe } from '../interfaces/recipe';
+import { RecipeToLoad } from '../interfaces/recipe';
 import { RecipeDetails } from '../interfaces/recipe-details';
 import { RecipesService } from '../recipes.service';
 
@@ -11,7 +11,7 @@ import { RecipesService } from '../recipes.service';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe?: Recipe;
+  recipe?: RecipeToLoad;
   id: number;
   details: RecipeDetails;
 
@@ -29,7 +29,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   getRecipe(): void {
     this._recipeService.getRecipes()
-      .subscribe((recipes: Recipe[]) => this.recipe = recipes.find(r => r.id === this.id));
+      .subscribe((recipes: RecipeToLoad[]) => this.recipe = recipes.find(r => r.id === this.id));
   }
 
   getRecipeDetails(): void {
