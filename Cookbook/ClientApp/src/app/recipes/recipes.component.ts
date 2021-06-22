@@ -22,8 +22,7 @@ export class RecipesComponent implements OnInit {
   constructor(
     private _categoriesService: CategoriesService,
     private _recipesService: RecipesService,
-    private _formBuilder: FormBuilder,
-    private _location: Location
+    private _formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {

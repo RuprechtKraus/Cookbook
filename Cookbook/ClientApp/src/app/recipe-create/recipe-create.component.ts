@@ -1,33 +1,51 @@
-import { Component, OnInit, ViewEncapsulation, ɵɵtrustConstantResourceUrl } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material/chips';
 
 import { TimeOption } from '../interfaces/time-option';
 import { Ingredient } from '../interfaces/ingredient';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { ServingOption } from '../interfaces/serving-options';
+import { RecipeToSave } from '../interfaces/recipe';
+
+const allowedFileTypes = ['jpeg', 'png'];
 
 @Component({
   selector: 'app-recipe-create',
   templateUrl: './recipe-create.component.html',
   styleUrls: ['./recipe-create.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class RecipeCreateComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, SPACE] as const;
   tags: string[] = [];
   steps: string[] = [""];
   stepsRemovable: boolean = false;
-  selectedTime: number;
-  ingredients: Ingredient[] = [
-    {
-      title: "",
-      list: ""
-    }
-  ];
+  selectedTime: number = null;
+  recipe: RecipeToSave = {
+    title: null,
+    desc: null,
+    author: null,
+    tags: [],
+    cookingTime: null,
+    servings: null,
+    ingredients: [{
+      title: null,
+      list: null
+    }],
+    steps: [ null ]
+  };
   timeOptions: TimeOption[] = [
-    { value: 30, viewValue: '30 мин' },
-    { value: 60, viewValue: '60 мин' },
-    { value: 90, viewValue: '90 мин' },
-    { value: 120, viewValue: '120 мин' }
+    { value: 30, viewValue: '30' },
+    { value: 60, viewValue: '60' },
+    { value: 90, viewValue: '90' },
+    { value: 120, viewValue: '120' }
+  ];
+  servingOptions: ServingOption[] = [
+    { value: 1, viewValue: '1' },
+    { value: 2, viewValue: '2' },
+    { value: 3, viewValue: '3' },
+    { value: 4, viewValue: '4' },
+    { value: 5, viewValue: '5' },
+    { value: 6, viewValue: '6 ' }
   ];
 
   constructor(
@@ -40,50 +58,58 @@ export class RecipeCreateComponent implements OnInit {
   addTag(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
     if (value) {
-      this.tags.push(value);
+      this.recipe.tags.push(value);
     }
     event.input.value = "";
   }
 
   removeTag(tag: string): void {
-    const index = this.tags.indexOf(tag);
+    const index = this.recipe.tags.indexOf(tag);
     if (index >= 0) {
-      this.tags.splice(index, 1);
+      this.recipe.tags.splice(index, 1);
     }
   }
 
   addIngredientsCategory(): void {
-    this.ingredients.push({
-      title: "",
-      list: ""
+    this.recipe.ingredients.push({
+      title: null,
+      list: null
     });
   }
 
   removeIngredientsCategory(ingToRemove: Ingredient): void {
-    const index = this.ingredients.indexOf(ingToRemove);
-    if (index > 0) {
-      this.ingredients.splice(index, 1);
+    const index = this.recipe.ingredients.indexOf(ingToRemove);
+    if (index >= 0) {
+      this.recipe.ingredients.splice(index, 1);
     }
   }
 
   addStep(): void {
-    this.steps.push("");
+    this.recipe.steps.push("");
     this.stepsRemovable = true;
   }
 
   removeStep(step: string): void {
-    const index = this.steps.indexOf(step);
-    if (index > 0) {
-      this.steps.splice(index, 1);
-      if (this.steps.length === 1) {
+    const index = this.recipe.steps.indexOf(step);
+    if (index >= 0) {
+      this.recipe.steps.splice(index, 1);
+      if (this.recipe.steps.length === 1) {
         this.stepsRemovable = false;
       }
     }
   }
 
   onSubmit(): void {
-    console.log(this.ingredients);
-    console.log(this.steps);
+    console.log(this.recipe);
+  }
+
+  imageUploaded(event: any): void {
+    const file = event.target.files[0];
+    const fileType = file.type.split('/')[1];
+
+    if (allowedFileTypes.includes(fileType)) {
+      console.log('File uploaded');
+    }
   }
 
   trackByIndex(index: number, obj: any): number {

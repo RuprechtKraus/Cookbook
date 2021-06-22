@@ -1,4 +1,4 @@
 export interface Ingredient {
-  title: string;
-  list: string;
+  title?: string;
+  list?: string;
 }

@@ -75,6 +75,11 @@
   transform: scale(1.05);
 }
 
+.image-input
+{
+  display: none;
+}
+
 /* Info blank */
 
 .recipe-blank-right
@@ -186,6 +191,37 @@
 .info-wrapper
 {
   height: 50px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-info
+{
+  width: 287px;
+}
+
+.servings-info
+{
+  width: 296px;
+}
+
+.dish-info
+{
+  display: flex;
+  align-items: center;
+}
+
+.dish-info_text
+{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: #25292D;
 }
 
 .time-field
@@ -194,11 +230,13 @@
   max-width: 220px;
   height: 100%;
   width: 100%;
+
+  margin-right: 11px;
+  padding: 11px 18px;
 }
 
-.time-input
+.select-option
 {
-  max-width: 140px;
   width: 100%;
 
   border-style: none;
@@ -209,11 +247,14 @@
   line-height: 28px;
 
   color: rgba(37, 41, 45, 0.5);
+
+  appearance: none;
+  background: url("../../assets/icons/select-arrow-down.svg") no-repeat 100%;
 }
 
-.time-input:focus
+.select-option:focus
 {
-  outline: none;
+  background-image: url("../../assets/icons/select-arrow-up.svg");
 }
 
 /* Steps and ingredients */
@@ -247,7 +288,7 @@
   margin-bottom: 40px;
 }
 
-.ingredients-blank
+.ingredients-blank-wrapper
 {
   margin-bottom: 20px;
 }
