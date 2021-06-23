@@ -336,3 +336,31 @@ body
   box-shadow: 0 0 10px darkgrey;
   transform: scale(1.01);
 }
+
+/* Go back button */
+
+.back-button-container 
+{
+  margin-bottom: 11px;
+}
+
+.ic-back
+{
+  margin-right: 13px;
+}
+
+.back-button
+{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #FDB100;
+}
+
+.back-button:hover
+{
+  filter: brightness(0.9);
+}

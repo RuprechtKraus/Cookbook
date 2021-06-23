@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Location } from '@angular/common';
 
 import { RecipeToLoad } from '../interfaces/recipe';
 import { Category } from '../interfaces/category';
 import { CategoriesService } from '../categories.service';
 import { RecipesService } from '../recipes.service';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-recipes',
@@ -22,7 +22,8 @@ export class RecipesComponent implements OnInit {
   constructor(
     private _categoriesService: CategoriesService,
     private _recipesService: RecipesService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _locationService: LocationService
   ) { }
 
   ngOnInit() {
@@ -36,8 +37,8 @@ export class RecipesComponent implements OnInit {
 
   }
 
-  goBack(): void {
-    // this._location.back();
+  onGoBackClick(): void {
+    this._locationService.goBack();
   }
 
 }

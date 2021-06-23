@@ -24,7 +24,6 @@ import { IngredientsBlankComponent } from './ingredients-blank/ingredients-blank
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

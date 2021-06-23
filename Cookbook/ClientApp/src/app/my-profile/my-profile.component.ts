@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { RecipeToLoad } from '../interfaces/recipe';
+import { LocationService } from '../location.service';
 import { RecipeCardComponent } from '../recipe-card/recipe-card.component';
 import { RecipesService } from '../recipes.service';
 
@@ -14,7 +15,8 @@ export class MyProfileComponent implements OnInit {
   myRecipes: RecipeToLoad[] = [];
 
   constructor(
-    private _recipesService: RecipesService
+    private _recipesService: RecipesService,
+    private _locationService: LocationService
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +29,13 @@ export class MyProfileComponent implements OnInit {
 
   getRecipes(): void {
     this._recipesService.getRecipes().
-      subscribe((recipes: RecipeToLoad[]) => this.myRecipes = recipes);
+      subscribe((recipes: RecipeToLoad[]) => this.myRecipes = recipes.filter(
+        r => (r.id === 1 || r.id === 2)
+      ));
+  }
+
+  onGoBackClick(): void {
+    this._locationService.goBack();
   }
 
 }

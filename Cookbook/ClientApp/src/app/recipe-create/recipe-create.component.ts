@@ -6,6 +6,7 @@ import { Ingredient } from '../interfaces/ingredient';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ServingOption } from '../interfaces/serving-options';
 import { RecipeToSave } from '../interfaces/recipe';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-recipe-create',
@@ -48,6 +49,7 @@ export class RecipeCreateComponent implements OnInit {
   ];
 
   constructor(
+    private _locationService: LocationService
   ) { }
 
   ngOnInit(): void {
@@ -113,5 +115,9 @@ export class RecipeCreateComponent implements OnInit {
 
   trackByIndex(index: number, obj: any): number {
     return index;
+  }
+
+  onGoBackClick(): void {
+    this._locationService.goBack();
   }
 }
