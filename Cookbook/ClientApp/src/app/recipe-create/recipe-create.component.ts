@@ -7,14 +7,13 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { ServingOption } from '../interfaces/serving-options';
 import { RecipeToSave } from '../interfaces/recipe';
 
-const allowedFileTypes = ['jpeg', 'png'];
-
 @Component({
   selector: 'app-recipe-create',
   templateUrl: './recipe-create.component.html',
   styleUrls: ['./recipe-create.component.css'],
 })
 export class RecipeCreateComponent implements OnInit {
+  readonly allowedFileTypes = ['jpeg', 'png'] as const;
   readonly separatorKeysCodes = [ENTER, SPACE] as const;
   tags: string[] = [];
   steps: string[] = [""];
@@ -107,7 +106,7 @@ export class RecipeCreateComponent implements OnInit {
     const file = event.target.files[0];
     const fileType = file.type.split('/')[1];
 
-    if (allowedFileTypes.includes(fileType)) {
+    if (this.allowedFileTypes.includes(fileType)) {
       console.log('File uploaded');
     }
   }

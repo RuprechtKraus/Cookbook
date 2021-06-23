@@ -10,13 +10,6 @@
 </div>
 
 <div class="recipe-blank">
-  <!-- <div class="recipe-blank_pic-upload">
-    <div class="upload-area">
-      <object class="upload-area_icon" data="../../assets/icons/ic-upload.svg" type="image/svg+xml"></object>
-      <div class="upload-area_text">Загрузите фото готового блюда</div>
-    </div>
-  </div> -->
-
   <div id="image-area" class="recipe-blank_pic-upload">
     <input type="file" class="image-input" #imageUpload 
       accept="image/jpeg, image/png" (change)="imageUploaded($event)">
@@ -103,7 +96,7 @@
         </div>
         <button class="remove-btn" *ngIf="stepsRemovable" (click)="removeStep(step)"></button>
       </div>
-      <textarea [(ngModel)]="recipe.steps[i]" class="step-desc" placeholder="Описание шага"></textarea>
+      <textarea [(ngModel)]="recipe.steps[i]" class="blank-field step-desc" placeholder="Описание шага"></textarea>
     </div>
     <div class="add-wrapper">
       <button class="button-outlined add-blank" (click)="addStep()">

@@ -2,6 +2,6 @@
   <button class="remove-btn" *ngIf="removable" (click)="onClick()"></button>
 </div>
 <div class="ingredients-blank">
-  <input class="title-input" [(ngModel)]="ingredient.title" placeholder="Заголовок для ингридиентов" maxlength="50">
-  <textarea class="ingredients-input" [(ngModel)]="ingredient.list" placeholder="Список подуктов для категории"></textarea>
+  <input class="blank-field" [(ngModel)]="ingredient.title" placeholder="Заголовок для ингридиентов" maxlength="50">
+  <textarea class="blank-field ingredients-input" [(ngModel)]="ingredient.list" placeholder="Список подуктов для категории"></textarea>
 </div>

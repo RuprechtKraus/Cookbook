@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,9 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IngredientsBlankComponent } from './ingredients-blank/ingredients-blank.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { IngredientsBlankComponent } from './ingredients-blank/ingredients-blank
     RecipeCardComponent,
     RecipeDetailsComponent,
     RecipeCreateComponent,
-    IngredientsBlankComponent
+    IngredientsBlankComponent,
+    MyProfileComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -41,10 +47,11 @@ import { IngredientsBlankComponent } from './ingredients-blank/ingredients-blank
     BrowserAnimationsModule,
     MatChipsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     MatSelectModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
