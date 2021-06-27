@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Recipe } from '../interfaces/recipe';
+import { RecipeToLoad } from '../interfaces/recipe';
 
 @Component({
   selector: 'app-recipe-card',
@@ -9,7 +9,7 @@ import { Recipe } from '../interfaces/recipe';
   styleUrls: ['./recipe-card.component.css']
 })
 export class RecipeCardComponent implements OnInit {
-  @Input() recipe?: Recipe;
+  @Input() recipe?: RecipeToLoad;
   onDetailPage: boolean;
 
   constructor(

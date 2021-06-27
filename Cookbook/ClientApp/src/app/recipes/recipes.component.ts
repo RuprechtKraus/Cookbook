@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
-import { Recipe } from '../interfaces/recipe';
+import { RecipeToLoad } from '../interfaces/recipe';
 import { Category } from '../interfaces/category';
 import { CategoriesService } from '../categories.service';
 import { RecipesService } from '../recipes.service';
-import { Observable } from 'rxjs';
+import { LocationService } from '../location.service';
 
 @Component({
   selector: 'app-recipes',
@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class RecipesComponent implements OnInit {
   categories: Category[] = [];
-  recipes: Recipe[] = [];
+  recipes: RecipeToLoad[] = [];
   searchForm = this._formBuilder.group({
     searchText: ''
   });
@@ -22,18 +22,23 @@ export class RecipesComponent implements OnInit {
   constructor(
     private _categoriesService: CategoriesService,
     private _recipesService: RecipesService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _locationService: LocationService
   ) { }
 
   ngOnInit() {
     this._categoriesService.getCategories()
       .subscribe((categories: Category[]) => this.categories = categories);
     this._recipesService.getRecipes().
-      subscribe((recipes: Recipe[]) => this.recipes = recipes);
+      subscribe((recipes: RecipeToLoad[]) => this.recipes = recipes);
   }
 
   onSubmit(): void {
 
+  }
+
+  onGoBackClick(): void {
+    this._locationService.goBack();
   }
 
 }

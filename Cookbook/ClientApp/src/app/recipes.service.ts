@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 
-import { Recipe } from './interfaces/recipe';
+import { RecipeToLoad } from './interfaces/recipe';
 import { RecipeDetails } from './interfaces/recipe-details';
 import { Observable, of } from 'rxjs';
 
@@ -25,8 +24,8 @@ export class RecipesService {
     }
   }
 
-  getRecipes(): Observable<Recipe[]> {
-    return this._http.get<Recipe[]>(this._recipesUrl);
+  getRecipes(): Observable<RecipeToLoad[]> {
+    return this._http.get<RecipeToLoad[]>(this._recipesUrl);
   }
 
   // getRecipe(id: number): Observable<Recipe> { }

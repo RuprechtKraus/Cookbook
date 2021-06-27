@@ -27,7 +27,20 @@ body
   box-sizing: border-box;
 }
 
+.ellipsis-text
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Background waves */
+
+.background-wave
+{
+  position: relative;
+}
+
 
 .wave-container
 {
@@ -49,11 +62,6 @@ body
 }
 
 /* Buttons */
-
-.background-wave
-{
-  position: relative;
-}
 
 .button-filled
 {
@@ -232,18 +240,21 @@ body
 }
 
 /* Pages' header */
-.page-header {
+.page-header 
+{
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
 }
 
-.page-header_buttons {
+.page-header_buttons 
+{
   display: flex;
   justify-content: center;
 }
 
-.page-header_main-button {
+.page-header_main-button 
+{
   width: 278px;
   height: 60px;
 
@@ -252,13 +263,15 @@ body
   align-items: center;
 }
 
-.page-header_main-button-icon {
+.page-header_main-button-icon 
+{
   height: 18px;
   width: 18px;
   margin-right: 21px;
 }
 
-.page-header_title {
+.page-header_title 
+{
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: bold;
@@ -266,4 +279,88 @@ body
   line-height: 62px;
 
   color: #25292D;
+}
+
+/* Remove button (cross) */
+
+.remove-btn
+{
+  background-image: url("assets/icons/cross.svg");
+  background-color: transparent;
+
+  height: 14px;
+  width: 14px;
+
+  border: none;
+
+  transition: transform .2s ease-in-out;
+}
+
+.remove-btn:hover
+{
+  transform: scale(1.2);
+}
+
+/* Blank fields */
+
+.blank-field
+{
+  border: 1px solid rgba(145, 150, 161, 0.4);
+  box-sizing: border-box;
+  padding: 11px 24px;
+  border-radius: 16px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: rgba(37, 41, 45, 0.5);
+}
+
+.blank-field:focus
+{
+  outline: none;
+}
+
+/* Recipe card clickable */
+
+.recipe-card__clickable .recipe-card
+{
+  transition: transform .2s ease-in-out;
+}
+
+.recipe-card__clickable:hover .recipe-card
+{
+  box-shadow: 0 0 10px darkgrey;
+  transform: scale(1.01);
+}
+
+/* Go back button */
+
+.back-button-container 
+{
+  margin-bottom: 11px;
+}
+
+.ic-back
+{
+  margin-right: 13px;
+}
+
+.back-button
+{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #FDB100;
+}
+
+.back-button:hover
+{
+  filter: brightness(0.9);
 }
