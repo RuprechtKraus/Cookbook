@@ -33,7 +33,7 @@
   <h1 class="recipe-search_title">Поиск рецепта</h1>
   <div class="search-form_wrapper">
     <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <input id="search" class="search-field" type="search" placeholder="Название блюда...." formControlName="searchText">
+      <input id="search" class="search-field" type="search" maxlength="256" placeholder="Название блюда...." formControlName="searchText">
       <button class="search-btn" type="submit">Поиск</button>
     </form>
     <div class="tags">

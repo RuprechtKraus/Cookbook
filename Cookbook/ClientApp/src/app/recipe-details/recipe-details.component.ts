@@ -22,8 +22,7 @@ export class RecipeDetailsComponent implements OnInit {
     servings: null,
     favs: null,
     likes: null,
-    imageUrl: "",
-    imageAlt: ""
+    imageUrl: ""
   };
   id: number;
   details: RecipeDetails;
