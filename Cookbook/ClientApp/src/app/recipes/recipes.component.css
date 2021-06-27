@@ -24,15 +24,9 @@
   margin-bottom: 65px;
 }
 
-.recipe-card__clickable ::ng-deep .recipe-card
+.page-header_main-button-icon
 {
-  transition: all .2s ease-in-out;
-}
-
-.recipe-card__clickable:hover ::ng-deep .recipe-card
-{
-  box-shadow: 0 0 10px darkgrey;
-  transform: scale(1.01);
+  filter: brightness(0) invert(1);
 }
 
 /* Categories */

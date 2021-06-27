@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Recipe } from '../interfaces/recipe';
+import { RecipeToLoad } from '../interfaces/recipe';
 import { RecipeDetails } from '../interfaces/recipe-details';
+import { LocationService } from '../location.service';
 import { RecipesService } from '../recipes.service';
 
 @Component({
@@ -11,13 +12,25 @@ import { RecipesService } from '../recipes.service';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe?: Recipe;
+  recipe?: RecipeToLoad = {
+    id: null,
+    title: "",
+    desc: "",
+    author: "",
+    tags: [],
+    cookingTime: null,
+    servings: null,
+    favs: null,
+    likes: null,
+    imageUrl: ""
+  };
   id: number;
   details: RecipeDetails;
 
   constructor(
     private _route: ActivatedRoute,
-    private _recipeService: RecipesService
+    private _recipeService: RecipesService,
+    private _locationService: LocationService
   ) { 
     this.id = Number(this._route.snapshot.paramMap.get('id'));
   }
@@ -29,7 +42,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   getRecipe(): void {
     this._recipeService.getRecipes()
-      .subscribe((recipes: Recipe[]) => this.recipe = recipes.find(r => r.id === this.id));
+      .subscribe((recipes: RecipeToLoad[]) => this.recipe = recipes.find(r => r.id === this.id));
   }
 
   getRecipeDetails(): void {
@@ -37,4 +50,7 @@ export class RecipeDetailsComponent implements OnInit {
       .subscribe((details: RecipeDetails) => this.details = details[0]);
   }
 
+  onGoBackClick(): void {
+    this._locationService.goBack();
+  }
 }

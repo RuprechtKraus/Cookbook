@@ -1,16 +1,16 @@
 <div class="recipe-card">
   <div class="recipe-card_pic-container">
-    <img class="recipe-card_pic" [src]="recipe.imageUrl" [alt]="recipe.imageAlt">
+    <img class="recipe-card_pic" [src]="recipe.imageUrl" [alt]="recipe.title">
     <div class="recipe-card_author">
       <div class="ellipsis-text">@{{ recipe.author }}</div>
     </div>
   </div>
-  <div class="recipe-card_right">
+  <div class="recipe-card-right">
 
     <div class="recipe-card_top">
       <div class="recipe-card_tags">
         <div *ngFor="let tag of recipe.tags" class="recipe-card_tag">
-          <div class="ellipsis-text">{{ tag }}</div>
+          <span class="ellipsis-text">{{ tag }}</span>
         </div>
       </div>
       <div class="recipe-card_btns">
@@ -42,7 +42,7 @@
         <object class="recipe-card_info_icon" data="../../assets/icons/ic-persons.svg" type="image/svg+xml"></object>
         <div>
           <div class="recipe-card_info_title">Рецепт на:</div>
-          <div class="recipe-card_info_main">{{ recipe.persons }} персон</div>
+          <div class="recipe-card_info_main">{{ recipe.servings }} персон</div>
         </div>
       </div>
     </div>

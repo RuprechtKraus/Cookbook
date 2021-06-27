@@ -1,3 +1,8 @@
+.page-header_main-button-icon
+{
+  filter: brightness(0) invert(1);
+}
+
 /* Recipe preview */
 
 .delete-recipe-btn {
