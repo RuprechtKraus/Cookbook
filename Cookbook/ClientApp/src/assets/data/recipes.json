@@ -12,8 +12,7 @@
     "likes": 8,
     "cookingTime": 35,
     "persons": 5,
-    "imageUrl": "../../assets/images/strawberry-panna-cotta.jpg",
-    "imageAlt": "Strawberry Panna-Cotta"
+    "imageUrl": "../../assets/images/strawberry-panna-cotta.jpg"
   },
   {
     "id": 2,
@@ -28,8 +27,7 @@
     "likes": 7,
     "cookingTime": 90,
     "persons": 4,
-    "imageUrl": "../../assets/images/meatballs.jpg",
-    "imageAlt": "Meatballs"
+    "imageUrl": "../../assets/images/meatballs.jpg"
   },
   {
     "id": 3,
@@ -44,8 +42,7 @@
     "likes": 7,
     "cookingTime": 40,
     "persons": 3,
-    "imageUrl": "../../assets/images/pancakes.jpg",
-    "imageAlt": "Pancakes"
+    "imageUrl": "../../assets/images/pancakes.jpg"
   },
   {
     "id": 4,
@@ -60,7 +57,6 @@
     "likes": 7,
     "cookingTime": 35,
     "persons": 2,
-    "imageUrl": "../../assets/images/icecream.jpg",
-    "imageAlt": "Icecream"
+    "imageUrl": "../../assets/images/icecream.jpg"
   }
 ]
