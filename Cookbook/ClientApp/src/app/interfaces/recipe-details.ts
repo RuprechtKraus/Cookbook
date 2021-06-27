@@ -5,5 +5,6 @@ interface IngredientsForCategory {
 
 export interface RecipeDetails {
   categories: IngredientsForCategory[],
+  ingredients: string[];
   steps: string[];
 }

@@ -16,22 +16,22 @@
     <div class="left-col">
       <mat-form-field class="blank-field">
         <mat-label class="input-label">Имя</mat-label>
-        <input class="input mat-override" matInput maxlength="50">
+        <input class="input mat-override" matInput>
       </mat-form-field>
 
       <mat-form-field class="blank-field">
         <mat-label class="input-label">Логин</mat-label>
-        <input class="input mat-override" matInput maxlength="20">
+        <input class="input mat-override" matInput>
       </mat-form-field>
 
       <div class="blank-field pass-field">
-        <input [type]="hidePass ? 'password' : 'text'" class="pass" maxlength="20" placeholder="Пароль">
+        <input [type]="hidePass ? 'password' : 'text'" class="pass" maxlength="50" placeholder="Пароль">
         <img class="ic-show-pass" src="../../assets/icons/ic-show-pass.svg" (click)="switchPassField()">
       </div>
     </div>
 
     <div class="right-col">
-      <textarea class="blank-field about-me-field" maxlength="1000" placeholder="Напишите немного о себе"></textarea>
+      <textarea class="blank-field about-me-field" placeholder="Напишите немного о себе"></textarea>
     </div>
   </div>
 </div>
