@@ -9,6 +9,6 @@ namespace Cookbook.Repositories
     {
         public List<T> GetAll();
         public T Get( int id );
-        public void Remove( int id );
+        public void Remove( T item );
     }
 }

@@ -17,11 +17,10 @@
     },
     "Cookbook": {
       "commandName": "Project",
-      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:4200"
     },
     "WSL 2": {
       "commandName": "WSL2",

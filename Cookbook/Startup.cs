@@ -40,6 +40,7 @@ namespace Cookbook
             }
 
             app.UseStaticFiles();
+
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();

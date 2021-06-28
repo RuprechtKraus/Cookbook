@@ -22,11 +22,16 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this._categoriesService.getCategories()
-      .subscribe((categories: Category[]) => this.categories = categories);
+      .subscribe(
+        (response) => {
+          this.categories = response;
+        },
+        (error) => {
+          console.log(error.error);
+        })
   }
 
   onSubmit(): void {
     
   }
-
 }
