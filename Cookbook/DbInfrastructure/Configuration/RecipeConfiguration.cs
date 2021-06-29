@@ -15,13 +15,13 @@ namespace Cookbook.DbInfrastructure.Configuration
             builder.ToTable( "Recipes" ).HasKey( r => r.Id );
 
             builder.Property( r => r.Title ).IsRequired().HasMaxLength( 60 );
-            builder.Property( r => r.Desc ).IsRequired().HasMaxLength( 150 );
+            builder.Property( r => r.Desc ).IsRequired().HasMaxLength( 200 );
             builder.Property( r => r.Likes ).HasDefaultValue( 0 );
             builder.Property( r => r.Favs ).HasDefaultValue( 0 );
             builder.Property( r => r.CookingTime ).IsRequired();
             builder.Property( r => r.Servings ).IsRequired();
 
-            builder.HasOne<User>().WithMany( u => u.Recipes ).HasForeignKey(r => r.UserId);
+            builder.HasOne<User>().WithMany(u => u.Recipes).HasForeignKey(r => r.UserId);
             builder.HasMany( r => r.Tags ).WithMany( t => t.Recipes );
             builder.HasMany( r => r.Ingredients );
             builder.HasMany( r => r.Steps );

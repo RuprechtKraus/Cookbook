@@ -5,7 +5,7 @@ import { TimeOption } from '../interfaces/time-option';
 import { Ingredient } from '../interfaces/ingredient';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ServingOption } from '../interfaces/serving-options';
-import { RecipeToSave } from '../interfaces/recipe';
+import { RecipeToEdit } from '../interfaces/recipe';
 import { LocationService } from '../location.service';
 
 @Component({
@@ -20,10 +20,10 @@ export class RecipeCreateComponent implements OnInit {
   steps: string[] = [""];
   stepsRemovable: boolean = false;
   selectedTime: number = null;
-  recipe: RecipeToSave = {
+  recipe: RecipeToEdit = {
     title: null,
     desc: null,
-    author: null,
+    user: null,
     tags: [],
     cookingTime: null,
     servings: null,

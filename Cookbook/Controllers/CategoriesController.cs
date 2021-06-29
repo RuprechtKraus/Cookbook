@@ -15,7 +15,7 @@ namespace Cookbook.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private UnitOfWork _unitOfWork;
+        private readonly UnitOfWork _unitOfWork;
 
         public CategoriesController()
         {
@@ -28,7 +28,7 @@ namespace Cookbook.Controllers
         {
             var categories = _unitOfWork.Categories
                 .GetAll()
-                .Select(item => item.ToDto())
+                .Select( item => item.ToDto() )
                 .ToList();
             return categories;
         }
@@ -37,14 +37,14 @@ namespace Cookbook.Controllers
         [HttpGet("{id}")]
         public ActionResult<CategoryDto> GetCategory( int id )
         {
-            var category = _unitOfWork.Categories.Get( id ).ToDto();
+            var category = _unitOfWork.Categories.Get( id );
 
             if ( category == null )
             {
                 return NotFound();
             }
 
-            return category;
+            return category.ToDto();
         }
 
         // DELETE: api/Category/5
@@ -59,7 +59,7 @@ namespace Cookbook.Controllers
             }
 
             _unitOfWork.Categories.Remove( category );
-            _unitOfWork.Save();
+            _unitOfWork.SaveChanges();
 
             return NoContent();
         }

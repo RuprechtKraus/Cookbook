@@ -16,7 +16,7 @@ export class RecipeDetailsComponent implements OnInit {
     id: null,
     title: "",
     desc: "",
-    author: "",
+    user: "",
     tags: [],
     cookingTime: null,
     servings: null,

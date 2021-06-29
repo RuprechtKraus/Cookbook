@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Cookbook.DbInfrastructure;
 using Cookbook.Entities.Models;
+using Cookbook.Dtos;
 
 namespace Cookbook.Controllers
 {
@@ -14,95 +15,108 @@ namespace Cookbook.Controllers
     [ApiController]
     public class RecipesController : ControllerBase
     {
-        private readonly CookbookDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
-        public RecipesController(CookbookDbContext context)
+        public RecipesController()
         {
-            _context = context;
+            _unitOfWork = new UnitOfWork();
         }
 
         // GET: api/Recipes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
+        public IEnumerable<RecipeToLoadDto> GetRecipes()
         {
-            return await _context.Recipes.ToListAsync();
+            var recipes = _unitOfWork.Recipes.GetWithEagerLoad(r => r.Id > 0, "Tags");
+            List<RecipeToLoadDto> recipesDtos = new List<RecipeToLoadDto>();
+
+            foreach ( var r in recipes )
+            {
+                User owner = _unitOfWork.Users.Get( r.UserId );
+                recipesDtos.Add( r.ToRecipeToLoadDto( owner ) );
+            }
+
+            return recipesDtos;
         }
 
         // GET: api/Recipes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Recipe>> GetRecipe(int id)
+        public ActionResult<RecipeToLoadDto> GetRecipe(int id)
         {
-            var recipe = await _context.Recipes.FindAsync(id);
+            var recipes = _unitOfWork.Recipes.GetWithEagerLoad(r => r.Id == id, "Tags");
 
-            if (recipe == null)
+            if ( !recipes.Any() )
             {
                 return NotFound();
             }
 
-            return recipe;
+            var recipe = recipes.ElementAt( 0 );
+            var owner = _unitOfWork.Users.Get( recipe.UserId );
+            RecipeToLoadDto dto = recipe.ToRecipeToLoadDto( owner );
+
+            return dto;
         }
 
         // PUT: api/Recipes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
-        {
-            if (id != recipe.Id)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
+        //{
+        //    if (id != recipe.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(recipe).State = EntityState.Modified;
+        //    _context.Entry(recipe).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RecipeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!RecipeExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Recipes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
-        {
-            _context.Recipes.Add(recipe);
-            await _context.SaveChangesAsync();
+        //// POST: api/Recipes
+        //// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //[HttpPost]
+        //public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
+        //{
+        //    _context.Recipes.Add(recipe);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
-        }
+        //    return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
+        //}
 
-        // DELETE: api/Recipes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRecipe(int id)
-        {
-            var recipe = await _context.Recipes.FindAsync(id);
-            if (recipe == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Recipes/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteRecipe(int id)
+        //{
+        //    var recipe = await _context.Recipes.FindAsync(id);
+        //    if (recipe == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Recipes.Remove(recipe);
-            await _context.SaveChangesAsync();
+        //    _context.Recipes.Remove(recipe);
+        //    await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        private bool RecipeExists(int id)
-        {
-            return _context.Recipes.Any(e => e.Id == id);
-        }
+        //private bool RecipeExists(int id)
+        //{
+        //    return _context.Recipes.Any(e => e.Id == id);
+        //}
     }
 }
