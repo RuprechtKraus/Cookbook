@@ -23,7 +23,7 @@ export class RecipeCreateComponent implements OnInit {
   recipe: RecipeToEdit = {
     title: null,
     desc: null,
-    user: null,
+    author: null,
     tags: [],
     cookingTime: null,
     servings: null,

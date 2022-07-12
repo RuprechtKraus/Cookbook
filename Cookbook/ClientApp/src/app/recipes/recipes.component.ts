@@ -27,8 +27,8 @@ export class RecipesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._categoriesService.getCategories()
-      .subscribe((categories: Category[]) => this.categories = categories);
+    this._categoriesService.getCategories().
+      subscribe((categories: Category[]) => this.categories = categories);
     this._recipesService.getRecipes().
       subscribe((recipes: RecipeToLoad[]) => this.recipes = recipes);
   }

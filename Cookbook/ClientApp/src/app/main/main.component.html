@@ -38,9 +38,9 @@
   <div class="categories-list">
 
     <div class="category" *ngFor="let category of categories">
-      <div class="category_icon" [style.background-image]="'url(' + category.iconUrl + ')'"></div>
-      <h2 class="category_title">{{ category.title }}</h2>
-      <p class="category_desc">{{ category.desc }}</p>
+      <div class="category_icon" [style.background-image]="'url(' + category.iconURL + ')'"></div>
+      <h2 class="category_title">{{ category.name }}</h2>
+      <p class="category_desc">{{ category.description }}</p>
     </div>
 
   </div>
@@ -96,7 +96,7 @@
   <div class="search-form-container">
 
     <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-      <input id="search" class="search-field" type="search" maxlength="256" placeholder="Название блюда...." formControlName="searchText">
+      <input id="search" class="search-field" type="search" maxlength="256" placeholder="Название блюда..." formControlName="searchText">
       <button class="search-btn" type="submit">Поиск</button>
     </form>
 

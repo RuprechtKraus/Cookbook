@@ -26,8 +26,8 @@ export class MainComponent implements OnInit {
         (response) => {
           this.categories = response;
         },
-        (error) => {
-          console.log(error.error);
+        () => {
+          console.log("Unable to load categories");
         })
   }
 

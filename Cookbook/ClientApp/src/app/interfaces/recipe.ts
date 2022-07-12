@@ -4,7 +4,7 @@ interface RecipeBase {
   id?: number;
   title?: string;
   desc?: string;
-  user?: string;
+  author?: string;
   tags?: string[];
   cookingTime?: number;
   servings?: number;
