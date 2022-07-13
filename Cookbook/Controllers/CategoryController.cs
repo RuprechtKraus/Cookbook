@@ -15,7 +15,7 @@ namespace Cookbook.Controllers
         public IEnumerable<Category> Index()
         {
             var categories = _unitOfWork.CategoryRepository.Get();
-            return categories.ToList();
+            return categories;
         }
     }
 }

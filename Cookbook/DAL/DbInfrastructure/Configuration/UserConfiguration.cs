@@ -9,6 +9,7 @@ namespace Cookbook.DAL.DbInfrastructure.Configuration
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("User");
+            builder.Property(u => u.Name).IsRequired().HasMaxLength(20);
             builder.Property(u => u.Login).IsRequired().HasMaxLength(20);
             builder.Property(u => u.Password).IsRequired().HasMaxLength(250);
             builder.Property(u => u.About).HasMaxLength(1000);

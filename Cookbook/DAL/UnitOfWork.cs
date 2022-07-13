@@ -8,16 +8,16 @@ namespace Cookbook.DAL
     public class UnitOfWork : IDisposable
     {
         private CookbookContext _context = new CookbookContext();
-        private BaseRepository<Category> _categoryRepository;
+        private Repository<Category> _categoryRepository;
         private bool _disposed = false;
 
-        public BaseRepository<Category> CategoryRepository
+        public Repository<Category> CategoryRepository
         {
             get 
             { 
                 if (_categoryRepository == null)
                 {
-                    _categoryRepository = new BaseRepository<Category>(_context);
+                    _categoryRepository = new Repository<Category>(_context);
                 }
                 return _categoryRepository;
             }
