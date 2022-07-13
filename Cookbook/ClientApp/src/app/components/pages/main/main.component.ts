@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 import { CategoriesService } from '../../../services/categories.service';
 import { Category } from '../../../interfaces/category';
@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
 
   constructor(
     private _categoriesService: CategoriesService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: UntypedFormBuilder
   ) { }
 
   ngOnInit() {

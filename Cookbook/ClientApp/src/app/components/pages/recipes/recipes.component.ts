@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 import { RecipeToLoad } from '../../../interfaces/recipe';
 import { Category } from '../../../interfaces/category';
@@ -22,7 +22,7 @@ export class RecipesComponent implements OnInit {
   constructor(
     private _categoriesService: CategoriesService,
     private _recipesService: RecipesService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private _locationService: LocationService
   ) { }
 
