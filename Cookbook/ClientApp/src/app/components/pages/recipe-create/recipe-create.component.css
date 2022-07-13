@@ -228,12 +228,12 @@
   color: rgba(37, 41, 45, 0.5);
 
   appearance: none;
-  background: url("../../../assets/icons/select-arrow-down.svg") no-repeat 100%;
+  background: url("../../../../assets/icons/select-arrow-down.svg") no-repeat 100%;
 }
 
 .select-option:focus
 {
-  background-image: url("../../../assets/icons/select-arrow-up.svg");
+  background-image: url("../../../../assets/icons/select-arrow-up.svg");
 }
 
 /* Steps and ingredients */

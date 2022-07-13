@@ -77,7 +77,7 @@
   height: 38px;
 
   border-radius: 50%;
-  background: no-repeat center url('../../../assets/icons/ic-login.svg') #FDB100;
+  background: no-repeat center url('../../../../assets/icons/ic-login.svg') #FDB100;
 }
 
 .login-container_login

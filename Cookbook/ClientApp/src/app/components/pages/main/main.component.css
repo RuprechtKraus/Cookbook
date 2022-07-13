@@ -126,22 +126,22 @@
 
 .icon_menu
 {
-  background-image: url('../../../assets/icons/ic-menu.svg');
+  background-image: url('../../../../assets/icons/ic-menu.svg');
 }
 
 .icon_cook
 {
-  background-image: url('../../../assets/icons/ic-cook.svg');
+  background-image: url('../../../../assets/icons/ic-cook.svg');
 }
 
 .icon_chef
 {
-  background-image: url('../../../assets/icons/ic-chef.svg');
+  background-image: url('../../../../assets/icons/ic-chef.svg');
 }
 
 .icon_party
 {
-  background-image: url('../../../assets/icons/ic-party.svg');
+  background-image: url('../../../../assets/icons/ic-party.svg');
 }
 
 /* Recipe of the day */
@@ -233,12 +233,12 @@
 
 .likes_icon
 {
-  background-image: url('../../../assets/icons/ic-favorite.svg');
+  background-image: url('../../../../assets/icons/ic-favorite.svg');
 }
 
 .timer_icon
 {
-  background-image: url('../../../assets/icons/ic-timer.svg');
+  background-image: url('../../../../assets/icons/ic-timer.svg');
 }
 
 .cooking-time

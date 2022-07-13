@@ -285,7 +285,7 @@ body
 
 .remove-btn
 {
-  background-image: url("app/assets/icons/cross.svg");
+  background-image: url("assets/icons/cross.svg");
   background-color: transparent;
 
   height: 14px;
