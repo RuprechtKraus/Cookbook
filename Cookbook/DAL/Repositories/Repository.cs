@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cookbook.DAL.Repositories
 {
-    public class Repository<TEntity> where TEntity : class
+    public abstract class Repository<TEntity> where TEntity : class
     {
-        private readonly CookbookContext _context;
-        private readonly DbSet<TEntity> _dbSet;
+        protected readonly CookbookContext _context;
+        protected readonly DbSet<TEntity> _dbSet;
 
         public Repository(CookbookContext context)
         {

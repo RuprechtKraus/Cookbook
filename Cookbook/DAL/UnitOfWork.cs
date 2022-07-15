@@ -7,19 +7,32 @@ namespace Cookbook.DAL
 {
     public class UnitOfWork : IDisposable
     {
-        private CookbookContext _context = new CookbookContext();
-        private Repository<Category> _categoryRepository;
+        private readonly CookbookContext _context = new CookbookContext();
+        private CategoryRepository _categoryRepository;
+        private UserRepository _userRepository;
         private bool _disposed = false;
 
-        public Repository<Category> CategoryRepository
+        public CategoryRepository CategoryRepository
         {
             get 
             { 
                 if (_categoryRepository == null)
                 {
-                    _categoryRepository = new Repository<Category>(_context);
+                    _categoryRepository = new CategoryRepository(_context);
                 }
                 return _categoryRepository;
+            }
+        }
+
+        public UserRepository UserRepository
+        {
+            get
+            {
+                if (_userRepository == null)
+                {
+                    _userRepository = new UserRepository(_context);
+                }
+                return _userRepository;
             }
         }
 

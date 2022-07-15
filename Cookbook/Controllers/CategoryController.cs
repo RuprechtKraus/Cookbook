@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Cookbook.DAL;
 using Cookbook.Models;
 
 namespace Cookbook.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
