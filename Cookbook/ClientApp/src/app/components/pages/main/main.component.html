@@ -17,12 +17,14 @@
 
     <button class="button-filled add-recipe-btn">
       <div class="add-recipe-btn_inner">
-        <img src="../../../assets/icons/plus.svg">
+        <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="#FFFFFF"/>
+        </svg>
         Добавить рецепт
       </div>
     </button>
 
-    <button class="button-outlined login-btn">
+    <button *ngIf="!isLoggedIn" class="button-outlined login-btn" (click)="openModal('login-modal')">
       Войти
     </button>
 

@@ -9,8 +9,8 @@ namespace Cookbook.DAL.Repositories
 {
     public abstract class Repository<TEntity> where TEntity : class
     {
-        protected readonly CookbookContext _context;
-        protected readonly DbSet<TEntity> _dbSet;
+        internal readonly CookbookContext _context;
+        internal readonly DbSet<TEntity> _dbSet;
 
         public Repository(CookbookContext context)
         {

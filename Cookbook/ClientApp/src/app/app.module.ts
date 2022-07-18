@@ -23,6 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IngredientsBlankComponent } from './components/shared/ingredients-blank/ingredients-blank.component';
 import { MyProfileComponent } from './components/pages/my-profile/my-profile.component';
 import { FavoritesComponent } from './components/pages/favorites/favorites.component';
+import { ModalWindowComponent } from './components/shared/modal-window/modal-window.component';
+import { LoginModalComponent } from './components/shared/login-modal/login-modal.component';
+import { RegistrationModalComponent } from './components/shared/registration-modal/registration-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { FavoritesComponent } from './components/pages/favorites/favorites.compo
     RecipeCreateComponent,
     IngredientsBlankComponent,
     MyProfileComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ModalWindowComponent,
+    LoginModalComponent,
+    RegistrationModalComponent
   ],
   imports: [
     BrowserModule,
