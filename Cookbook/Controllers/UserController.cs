@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Cookbook.DAL.DbInfrastructure;
 using Cookbook.DAL;
-using Cookbook.Models;
 using Microsoft.AspNetCore.Authorization;
 using Cookbook.DTOs;
 using Cookbook.Exceptions;
@@ -17,6 +10,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Cookbook.Settings;
 using Microsoft.Extensions.Options;
+using Cookbook.DTOs.Converters;
 
 namespace Cookbook.Controllers
 {
@@ -77,11 +71,26 @@ namespace Cookbook.Controllers
 
             return Ok(new UserAuthenticatedDTO 
             { 
+                UserID = user.UserID,
                 Login = userDto.Login,
                 Password = userDto.Password,
                 Name = user.Name,
                 Token = tokenString
             });
+        }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public IActionResult GetUserByID(int id)
+        {
+            var user = _unitOfWork.UserRepository.GetByID(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user.ToDTO());
         }
     }
 }

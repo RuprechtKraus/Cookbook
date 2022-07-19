@@ -16,12 +16,12 @@
     <div class="left-col">
       <mat-form-field class="blank-field">
         <mat-label class="input-label">Имя</mat-label>
-        <input class="input mat-override" matInput maxlength="50">
+        <input class="input mat-override" matInput maxlength="50" [(ngModel)]="user.name">
       </mat-form-field>
 
       <mat-form-field class="blank-field">
         <mat-label class="input-label">Логин</mat-label>
-        <input class="input mat-override" matInput maxlength="20">
+        <input class="input mat-override" matInput maxlength="20" [(ngModel)]="user.login">
       </mat-form-field>
 
       <div class="blank-field pass-field">
@@ -31,7 +31,8 @@
     </div>
 
     <div class="right-col">
-      <textarea class="blank-field about-me-field" maxlength="1000" placeholder="Напишите немного о себе"></textarea>
+      <textarea class="blank-field about-me-field" maxlength="1000" placeholder="Напишите немного о себе" 
+      [(ngModel)]="user.about"></textarea>
     </div>
   </div>
 </div>
@@ -45,7 +46,7 @@
       Всего рецептов
     </div>
     <div class="activity-card_right">
-      <span class="activity-card_count">15</span>
+      <span class="activity-card_count">{{user.recipesCount}}</span>
     </div>
   </div>
 
@@ -57,7 +58,7 @@
       Всего лайков
     </div>
     <div class="activity-card_right">
-      <span class="activity-card_count">15</span>
+      <span class="activity-card_count">{{user.likesCount}}</span>
     </div>
   </div>
 
@@ -69,7 +70,7 @@
       В избранных
     </div>
     <div class="activity-card_right">
-      <span class="activity-card_count">15</span>
+      <span class="activity-card_count">{{user.favoritesCount}}</span>
     </div>
   </div>
 </div>

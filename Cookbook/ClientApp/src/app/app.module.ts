@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -26,6 +26,8 @@ import { FavoritesComponent } from './components/pages/favorites/favorites.compo
 import { ModalWindowComponent } from './components/shared/modal-window/modal-window.component';
 import { LoginModalComponent } from './components/shared/login-modal/login-modal.component';
 import { RegistrationModalComponent } from './components/shared/registration-modal/registration-modal.component';
+import { UnauthorizedModalComponent } from './components/shared/unauthorized-modal/unauthorized-modal.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { RegistrationModalComponent } from './components/shared/registration-mod
     FavoritesComponent,
     ModalWindowComponent,
     LoginModalComponent,
-    RegistrationModalComponent
+    RegistrationModalComponent,
+    UnauthorizedModalComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,9 @@ import { RegistrationModalComponent } from './components/shared/registration-mod
     FormsModule,
     NgSelectModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

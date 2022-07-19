@@ -36,11 +36,11 @@ export class LoginModalComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-
+    
     if (this.loginForm.invalid) {
       return;
     }
-
+    
     this.loading = true;
     this._accountService
       .login(this.FormControls.login.value, this.FormControls.password.value)
@@ -50,8 +50,7 @@ export class LoginModalComponent implements OnInit {
           this.close();
         },
         (badRequest) => {
-          this.loading = false;
-          this.submitted = false;
+          this.resetFormStatus();
           alert(badRequest.error.message);
         }
       );
@@ -63,9 +62,13 @@ export class LoginModalComponent implements OnInit {
   }
 
   clearForm(): void {
+    this.resetFormStatus();
+    this.loginForm.reset();
+  }
+
+  private resetFormStatus(): void {
     this.loading = false;
     this.submitted = false;
-    this.loginForm.reset();
   }
 
   openRegistrationModal(): void {

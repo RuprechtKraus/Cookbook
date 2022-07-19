@@ -4,7 +4,7 @@
         <div class="login__input-group">
             <input class="login__input" [ngClass]="{ 'input_invalid': submitted && FormControls.login.errors }"
             type="text" formControlName="login" maxlength="20" placeholder="Логин">
-            <input class="login__input" [ngClass]="{ 'input_invalid': submitted && FormControls.password.errors }"
+            <input [type]="'password'" class="login__input" [ngClass]="{ 'input_invalid': submitted && FormControls.password.errors }"
             type="text" formControlName="password" maxlength="20" placeholder="Пароль">
         </div>
         <div class="login__btn-group">

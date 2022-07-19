@@ -4,6 +4,7 @@ import { AccountService } from 'src/app/services/account.service';
 import { ModalWindowComponent } from '../modal-window/modal-window.component';
 import { ModalWindowService } from '../modal-window/modal-window.service';
 import { CustomValidators } from 'src/app/helpers/validators';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registration-modal',
@@ -39,12 +40,24 @@ export class RegistrationModalComponent implements OnInit {
   
   onSubmit(): void {
     this.submitted = true;
-
+    
     if (this.registrationForm.invalid) {
       return;
     }
     
-    this.clearForm();
+    this.loading = true;
+    this._accountService.register(this.registrationForm.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          alert("Registration successful. Now you can login");
+          this.close();
+        },
+        badRequest => {
+          this.resetFormStatus();
+          alert(badRequest.error.message);
+        }
+      );
   }
 
   close(): void {
@@ -53,9 +66,13 @@ export class RegistrationModalComponent implements OnInit {
   }
 
   clearForm(): void {
+    this.resetFormStatus();
+    this.registrationForm.reset();
+  }
+
+  private resetFormStatus(): void {
     this.loading = false;
     this.submitted = false;
-    this.registrationForm.reset();
   }
 
   openLoginModal(): void {

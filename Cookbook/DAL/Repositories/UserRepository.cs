@@ -81,7 +81,7 @@ namespace Cookbook.DAL.Repositories
         {
             if (password == null)
             {
-                throw new ArgumentNullException("password");
+                throw new ArgumentNullException(nameof(password));
             }
 
             if (string.IsNullOrEmpty(password))

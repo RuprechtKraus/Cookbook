@@ -38,6 +38,8 @@ namespace Cookbook
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
 
+            services.AddDbContext<DAL.DbInfrastructure.CookbookContext>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(x =>
                 {
@@ -66,6 +68,8 @@ namespace Cookbook
                         ValidateAudience = false
                     };
                 });
+
+            services.AddScoped<UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
