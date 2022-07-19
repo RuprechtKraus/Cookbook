@@ -10,6 +10,7 @@ namespace Cookbook.DAL
         private readonly CookbookContext _context = new CookbookContext();
         private CategoryRepository _categoryRepository;
         private UserRepository _userRepository;
+        private RecipeRepository _recipeRepository;
         private bool _disposed = false;
 
         public CategoryRepository CategoryRepository
@@ -33,6 +34,18 @@ namespace Cookbook.DAL
                     _userRepository = new UserRepository(_context);
                 }
                 return _userRepository;
+            }
+        }
+
+        public RecipeRepository RecipeRepository
+        {
+            get
+            {
+                if (_recipeRepository == null)
+                {
+                    _recipeRepository = new RecipeRepository(_context);
+                }
+                return _recipeRepository;
             }
         }
 

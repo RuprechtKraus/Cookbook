@@ -29,7 +29,6 @@ namespace Cookbook.DAL.DbInfrastructure
             builder.ApplyConfiguration(new RecipeStepConfiguration());
             builder.ApplyConfiguration(new IngredientsSectionConfiguration());
             builder.ApplyConfiguration(new TagConfiguration());
-            builder.ApplyConfiguration(new RecipeTagConfiguration());
         }
     }
 }

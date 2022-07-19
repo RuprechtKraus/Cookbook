@@ -5,7 +5,7 @@ import { TimeOption } from '../../../interfaces/time-option';
 import { Ingredient } from '../../../interfaces/ingredient';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ServingOption } from '../../../interfaces/serving-options';
-import { RecipeToEdit } from '../../../interfaces/recipe';
+import { RecipeToEdit } from '../../../interfaces/recipe[DELETE]';
 import { LocationService } from '../../../services/location.service';
 
 @Component({

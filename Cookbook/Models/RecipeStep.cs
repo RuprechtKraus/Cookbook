@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Cookbook.Models
 {
     public class RecipeStep
@@ -7,6 +9,8 @@ namespace Cookbook.Models
         public string Description { get; set; }
         
         public int RecipeID { get; set; }
+
+        [JsonIgnore]
         public virtual Recipe Recipe { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Cookbook.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -84,7 +84,7 @@ namespace Cookbook.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeID"), 1L, 1);
 
-                    b.Property<int>("CookingTimeInSeconds")
+                    b.Property<int>("CookingTimeInMinutes")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -159,7 +159,7 @@ namespace Cookbook.Migrations
 
                     b.HasIndex("TagID");
 
-                    b.ToTable("RecipeTag");
+                    b.ToTable("RecipeTag", (string)null);
                 });
 
             modelBuilder.Entity("Cookbook.Models.Tag", b =>

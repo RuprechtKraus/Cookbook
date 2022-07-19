@@ -41,10 +41,9 @@ export class MainComponent implements OnInit {
 
   goToRecipeCreationPage(): void {
     if (this._accountService.userValue) {
-      this._router.navigate(["/recipes/create"]);
-    }
-    else {
-      this.openModal("unauthorized-modal");
+      this._router.navigate(['/recipes/create']);
+    } else {
+      this.openModal('unauthorized-modal');
     }
   }
 

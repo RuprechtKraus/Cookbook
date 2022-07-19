@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDTO } from 'src/app/dtos/user-dto';
+import { RecipePreview } from 'src/app/interfaces/recipe';
+import { User } from 'src/app/interfaces/user';
 import { AccountService } from 'src/app/services/account.service';
 
-import { RecipeToLoad } from '../../../interfaces/recipe';
+import { RecipeToLoad } from '../../../interfaces/recipe[DELETE]';
 import { LocationService } from '../../../services/location.service';
 import { RecipesService } from '../../../services/recipes.service';
 
@@ -13,8 +14,8 @@ import { RecipesService } from '../../../services/recipes.service';
 })
 export class MyProfileComponent implements OnInit {
   hidePass: boolean = true;
-  myRecipes: RecipeToLoad[] = [];
-  user: UserDTO = {
+  myRecipes: RecipePreview[] = [];
+  user: User = {
     name: "",
     login: "",
     about: "",
@@ -46,12 +47,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   loadRecipes(): void {
-    this._recipesService
-      .getRecipes()
-      .subscribe(
-        (recipes: RecipeToLoad[]) =>
-          (this.myRecipes = recipes.filter((r) => r.id === 1 || r.id === 2))
-      );
+    
   }
 
   onGoBackClick(): void {

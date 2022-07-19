@@ -17,6 +17,7 @@ namespace Cookbook.Models
         public virtual User User { get; set; }
         public virtual ICollection<RecipeStep> RecipeSteps { get; set; }
         public virtual ICollection<IngredientsSection> IngredientsSections { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<RecipeTag> RecipeTags { get; set; }
     }
 }

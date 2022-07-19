@@ -1,53 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RecipeToLoad } from '../../..//interfaces/recipe';
-import { RecipeDetails } from '../../../interfaces/recipe-details';
+import { RecipeToLoad } from '../../../interfaces/recipe[DELETE]';
+import { RecipeDetails } from '../../../interfaces/recipe-details[DELETE]';
 import { LocationService } from '../../../services/location.service';
 import { RecipesService } from '../../../services/recipes.service';
+import { Recipe } from 'src/app/interfaces/recipe';
 
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
-  styleUrls: ['./recipe-details.component.css']
+  styleUrls: ['./recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe?: RecipeToLoad = {
-    id: null,
-    title: "",
-    desc: "",
-    author: "",
-    tags: [],
-    cookingTime: null,
-    servings: null,
-    favs: null,
-    likes: null,
-    imageUrl: ""
-  };
-  id: number;
+  // recipe?: RecipeToLoad = {
+  //   id: null,
+  //   title: "",
+  //   desc: "",
+  //   author: "",
+  //   tags: [],
+  //   cookingTime: null,
+  //   servings: null,
+  //   favs: null,
+  //   likes: null,
+  //   imageUrl: ""
+  // };
   details: RecipeDetails;
+  recipe: Recipe;
 
   constructor(
-    private _route: ActivatedRoute,
     private _recipeService: RecipesService,
     private _locationService: LocationService
-  ) { 
-    this.id = Number(this._route.snapshot.paramMap.get('id'));
+  ) {
   }
 
   ngOnInit() {
-    this.getRecipe();
-    this.getRecipeDetails();
+    this.loadRecipe();
   }
 
-  getRecipe(): void {
-    this._recipeService.getRecipes()
-      .subscribe((recipes: RecipeToLoad[]) => this.recipe = recipes.find(r => r.id === this.id));
-  }
-
-  getRecipeDetails(): void {
-    this._recipeService.getRecipeDetails()
-      .subscribe((details: RecipeDetails) => this.details = details[0]);
+  loadRecipe(): void {
+    this._recipeService.getRecipeByID(this.recipe.recipeID).subscribe((response) => {
+      this.recipe = response;
+    });
   }
 
   onGoBackClick(): void {

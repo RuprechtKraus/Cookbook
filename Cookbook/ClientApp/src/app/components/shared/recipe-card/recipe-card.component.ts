@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { RecipeToLoad } from '../../../interfaces/recipe';
+import { RecipePreview } from 'src/app/interfaces/recipe';
 
 @Component({
   selector: 'app-recipe-card',
@@ -9,7 +8,7 @@ import { RecipeToLoad } from '../../../interfaces/recipe';
   styleUrls: ['./recipe-card.component.css']
 })
 export class RecipeCardComponent implements OnInit {
-  @Input() recipe?: RecipeToLoad;
+  @Input() recipe: RecipePreview;
   onDetailPage: boolean;
 
   constructor(
@@ -19,5 +18,4 @@ export class RecipeCardComponent implements OnInit {
   ngOnInit(): void {
     this.onDetailPage = (this._router.url === '/recipes');
   }
-
 }

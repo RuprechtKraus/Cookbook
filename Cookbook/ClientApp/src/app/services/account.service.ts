@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UserDTO } from '../dtos/user-dto';
+import { User } from '../interfaces/user';
 import { UserLoginDTO } from '../dtos/user-login-dto';
 import { UserRegisterDTO } from '../dtos/user-register-dto';
 
@@ -45,7 +45,7 @@ export class AccountService {
     return this._http.post("api/user/register", userDTO);
   }
 
-  getByID(id: number): Observable<UserDTO> {
-    return this._http.get<UserDTO>(`api/user/${id}`);
+  getByID(id: number): Observable<User> {
+    return this._http.get<User>(`api/user/${id}`);
   }
 }

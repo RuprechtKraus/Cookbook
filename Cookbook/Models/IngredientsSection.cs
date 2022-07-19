@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Cookbook.Models
 {
@@ -9,6 +10,8 @@ namespace Cookbook.Models
         public string Products { get; set; }
 
         public int RecipeID { get; set; }
+
+        [JsonIgnore]
         public virtual Recipe Recipe { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RecipeToLoad } from '../../../interfaces/recipe';
 import { RecipesService } from '../../../services/recipes.service';
 import { LocationService } from '../../../services/location.service';
+import { RecipePreview } from 'src/app/interfaces/recipe';
 
 @Component({
   selector: 'app-favorites',
@@ -10,7 +10,7 @@ import { LocationService } from '../../../services/location.service';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
-  favRecipes: RecipeToLoad[] = [];
+  favRecipes: RecipePreview[] = [];
 
   constructor(
     private _recipesService: RecipesService,
@@ -22,10 +22,10 @@ export class FavoritesComponent implements OnInit {
   }
 
   getFavoriteRecipes(): void {
-    this._recipesService.getRecipes()
-      .subscribe((recipes: RecipeToLoad[]) => this.favRecipes = recipes.filter(
-        r => (r.id === 1 || r.id === 3)
-        ));
+    // this._recipesService.getRecipes()
+    //   .subscribe((recipes: RecipeToLoad[]) => this.favRecipes = recipes.filter(
+    //     r => (r.id === 1 || r.id === 3)
+    //     ));
   }
 
   onGoBackClick(): void {

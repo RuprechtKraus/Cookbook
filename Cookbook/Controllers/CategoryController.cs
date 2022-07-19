@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Cookbook.DAL;
-using Cookbook.Models;
 
 namespace Cookbook.Controllers
 {
@@ -11,10 +9,10 @@ namespace Cookbook.Controllers
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
-        public IEnumerable<Category> Index()
+        public IActionResult Index()
         {
             var categories = _unitOfWork.CategoryRepository.Get();
-            return categories;
+            return Ok(categories);
         }
     }
 }

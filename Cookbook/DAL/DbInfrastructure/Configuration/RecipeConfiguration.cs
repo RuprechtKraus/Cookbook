@@ -14,8 +14,25 @@ namespace Cookbook.DAL.DbInfrastructure.Configuration
             builder.Property(r => r.Description).HasMaxLength(1000);
             builder.Property(r => r.TimesLiked).HasDefaultValue(0);
             builder.Property(r => r.TimesFavorited).HasDefaultValue(0);
-            builder.Property(r => r.CookingTimeInSeconds).IsRequired();
+            builder.Property(r => r.CookingTimeInMinutes).IsRequired();
             builder.Property(r => r.ServingsAmount).IsRequired();
+
+            builder.HasMany(r => r.Tags)
+                .WithMany(t => t.Recipes)
+                .UsingEntity<RecipeTag>(
+                    j => j
+                        .HasOne(rt => rt.Tag)
+                        .WithMany(t => t.RecipeTags)
+                        .HasForeignKey(rt => rt.TagID),
+                    j => j
+                        .HasOne(rt => rt.Recipe)
+                        .WithMany(r => r.RecipeTags)
+                        .HasForeignKey(rt => rt.RecipeID),
+                    j =>
+                    {
+                        j.HasKey(t => new { t.RecipeID, t.TagID });
+                    }
+                );
         }
     }
 }
