@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-
-import { Ingredient } from '../../../interfaces/ingredient';
+import { IngredientsSection } from 'src/app/interfaces/ingredients-section';
 
 @Component({
   selector: 'app-ingredients-blank',
@@ -9,8 +8,8 @@ import { Ingredient } from '../../../interfaces/ingredient';
 })
 export class IngredientsBlankComponent implements OnInit {
   @Input() removable: boolean = false;
-  @Input() ingredient: Ingredient;
-  @Output() remove = new EventEmitter<Ingredient>();
+  @Input() section: IngredientsSection;
+  @Output() remove = new EventEmitter<IngredientsSection>();
 
   constructor( ) { 
     
@@ -20,7 +19,7 @@ export class IngredientsBlankComponent implements OnInit {
   }
 
   onClick(): void {
-    this.remove.emit(this.ingredient);
+    this.remove.emit(this.section);
   }
 
 }

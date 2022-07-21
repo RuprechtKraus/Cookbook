@@ -13,9 +13,10 @@ namespace Cookbook.DTOs
         public int CookingTimeInMinutes { get; set; }
         public int ServingsAmount { get; set; }
         public string ImageURL { get; set; }
+        public int UserID { get; set; }
         public string User { get; set; }
         public ICollection<string> Tags { get; set; }
-        public ICollection<string> RecipeSteps { get; set; }
+        public ICollection<RecipeStepDTO> RecipeSteps { get; set; }
         public ICollection<IngredientsSectionDTO> IngredientsSections { get; set; }
     }
 }

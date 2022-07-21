@@ -10,7 +10,7 @@
     {{ recipe.name }}
   </h1>
   <div class="page-header_buttons">
-    <button class="button-outlined delete-recipe-btn">
+    <button *ngIf="user && user.userID == recipe.userID" class="button-outlined delete-recipe-btn" (click)="deleteRecipe()">
       <object class="delete-icon" data="../../assets/icons/ic-trash.svg" type="image/svg+xml"></object>
     </button>
     <button class="button-filled page-header_main-button">
@@ -22,27 +22,26 @@
 
 <div *ngIf="recipe">
   <app-recipe-card [recipe]="recipe"></app-recipe-card>
-  <div *ngIf="details" class="recipe-container">
+  <div *ngIf="recipe" class="recipe-container">
     <div class="recipe-details_ingredients">
       <div class="ingredients_title">Ингридиенты</div>
-      <div *ngFor="let category of details.categories" class="ingredients_category">
+      <div *ngFor="let section of recipe.ingredientsSections" class="ingredients_category">
         <div class="ingredients_category_title">
-          {{ category.title }}
+          {{ section.name }}
         </div>
         <div class="ingredients_category_list">
-          <div *ngFor="let item of category.list" class="ingredients_item">
-            {{ item }}
+          <div class="ingredients_item" [innerText]="section.products">
           </div>
         </div>
       </div>
     </div>
     <div class="recipe-details_steps">
-      <div *ngFor="let step of details.steps; let i=index" class="step">
+      <div *ngFor="let step of recipe.recipeSteps" class="step">
         <div class="step-number">
-          Шаг {{ i + 1 }}
+          Шаг {{ step.stepIndex }}
         </div>
         <p class="step-desc">
-          {{ step }}
+          {{ step.description }}
         </p>
       </div>
       <div class="bon-appetit">Приятного аппетита!</div>

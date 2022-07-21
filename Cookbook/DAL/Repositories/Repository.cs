@@ -59,11 +59,22 @@ namespace Cookbook.DAL.Repositories
         public virtual void Delete(int id)
         {
             TEntity entityToDelete = _dbSet.Find(id);
+
+            if (entityToDelete == null)
+            {
+                throw new ArgumentException("Cannot find recipe with this id");
+            }
+
             Delete(entityToDelete);
         }
 
         public virtual void Delete(TEntity entityToDelete)
         {
+            if (entityToDelete == null)
+            {
+                throw new ArgumentNullException(nameof(entityToDelete));
+            }
+
             if (_context.Entry(entityToDelete).State == EntityState.Detached)
             {
                 _dbSet.Attach(entityToDelete);

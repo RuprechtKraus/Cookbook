@@ -1,22 +1,29 @@
-import { IngredientsSection } from "./ingredients-section";
-import { RecipeStep } from "./recipe-step";
+import { IngredientsSection } from './ingredients-section';
+import { RecipeStep } from './recipe-step';
 
 export interface RecipeBase {
-  recipeID: number;
+  userID: number;
+  user: string;
   name: string;
   description: string;
-  timesLiked: number;
-  timesFavorited: number;
   cookingTimeInMinutes: number;
   servingsAmount: number;
-  user: string;
   tags: string[];
+}
+
+export interface RecipeWithImageFavsAndLikes {
+  timesLiked: number;
+  timesFavorited: number;
   imageURL: string;
 }
 
-export type RecipePreview = RecipeBase;
-
-export interface Recipe extends RecipeBase {
-  steps: RecipeStep[];
+export interface RecipeWithDetailedInfo {
+  recipeSteps: RecipeStep[];
   ingredientsSections: IngredientsSection[];
 }
+
+export interface RecipePreview extends RecipeBase, RecipeWithImageFavsAndLikes {
+  recipeID: number;
+}
+
+export interface Recipe extends RecipePreview, RecipeWithDetailedInfo {}

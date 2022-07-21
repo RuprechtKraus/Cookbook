@@ -50,7 +50,7 @@ export class RegistrationModalComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          alert("Registration successful. Now you can login");
+          alert("Регистрация успешна. Теперь вы можете войти");
           this.close();
         },
         badRequest => {

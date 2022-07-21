@@ -9,7 +9,7 @@ namespace Cookbook.DTOs.Converters
             return new IngredientsSectionDTO
             {
                 Name = section.Name,
-                Products = section.Products.Split(';', System.StringSplitOptions.RemoveEmptyEntries)
+                Products = section.Products
             };
         }
     }

@@ -20,10 +20,11 @@ namespace Cookbook.DTOs.Converters
                 CookingTimeInMinutes = recipe.CookingTimeInMinutes,
                 ServingsAmount = recipe.ServingsAmount,
                 ImageURL = recipe.ImageURL,
-                User = recipe.User.Name,
+                UserID = recipe.UserID,
+                User = recipe.User.Login,
                 RecipeSteps = recipe.RecipeSteps
                     .OrderBy(s => s.StepIndex)
-                    .Select(s => s.Description)
+                    .Select(s => s.ToDTO())
                     .ToList(),
                 IngredientsSections = recipe.IngredientsSections
                     .Select(s => s.ToDTO())
