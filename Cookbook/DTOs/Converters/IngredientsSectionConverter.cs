@@ -12,5 +12,14 @@ namespace Cookbook.DTOs.Converters
                 Products = section.Products
             };
         }
+
+        public static IngredientsSection ToIngredientsSection(this IngredientsSectionDTO dto)
+        {
+            return new IngredientsSection
+            {
+                Name = dto.Name,
+                Products = dto.Products
+            };
+        }
     }
 }

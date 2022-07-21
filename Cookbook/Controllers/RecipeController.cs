@@ -21,11 +21,9 @@ namespace Cookbook.Controllers
     {
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
         private readonly AppSettings _appSettings;
-        private readonly IConfiguration _configuration;
 
-        public RecipeController(IConfiguration configuration, IOptions<AppSettings> appSettings)
+        public RecipeController(IOptions<AppSettings> appSettings)
         {
-            _configuration = configuration;
             _appSettings = appSettings.Value;
         }
 
@@ -74,10 +72,10 @@ namespace Cookbook.Controllers
                     ServingsAmount = recipeDTO.ServingsAmount,
                     UserID = recipeDTO.UserID,
                     RecipeSteps = recipeDTO.RecipeSteps
-                        .Select(s => ConvertStepDTO(s))
+                        .Select(s => s.ToRecipeStep())
                         .ToList(),
                     IngredientsSections = recipeDTO.IngredientsSections
-                        .Select(s => ConvertIngredientsSectionDTO(s))
+                        .Select(s => s.ToIngredientsSection())
                         .ToList(),
                     Tags = recipeDTO.Tags.Select(t => new Tag{ Name = t }).ToList(),
                     ImageURL = imagePathFrontend
@@ -108,24 +106,6 @@ namespace Cookbook.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
-
-        private RecipeStep ConvertStepDTO(RecipeStepDTO dto)
-        {
-            return new RecipeStep
-            {
-                StepIndex = dto.StepIndex,
-                Description = dto.Description
-            };
-        }
-
-        private IngredientsSection ConvertIngredientsSectionDTO(IngredientsSectionDTO dto)
-        {
-            return new IngredientsSection
-            {
-                Name = dto.Name,
-                Products = dto.Products
-            };
         }
     }
 }

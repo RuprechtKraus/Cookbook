@@ -2,7 +2,7 @@
 
 namespace Cookbook.DTOs.Converters
 {
-    public static class RecipeStepsConverter
+    public static class RecipeStepConverter
     {
         public static RecipeStepDTO ToDTO(this RecipeStep recipeStep)
         {
@@ -10,6 +10,15 @@ namespace Cookbook.DTOs.Converters
             {
                 StepIndex = recipeStep.StepIndex,
                 Description = recipeStep.Description
+            };
+        }
+
+        public static RecipeStep ToRecipeStep(this RecipeStepDTO dto)
+        {
+            return new RecipeStep
+            {
+                StepIndex = dto.StepIndex,
+                Description = dto.Description
             };
         }
     }
