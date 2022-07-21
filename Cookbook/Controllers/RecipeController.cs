@@ -12,6 +12,7 @@ using System.IO;
 using Cookbook.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using System.Web;
 
 namespace Cookbook.Controllers
 {
@@ -19,11 +20,12 @@ namespace Cookbook.Controllers
     [Route("api/[controller]")]
     public class RecipeController : Controller
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork;
         private readonly AppSettings _appSettings;
 
-        public RecipeController(IOptions<AppSettings> appSettings)
+        public RecipeController(UnitOfWork unitOfWork, IOptions<AppSettings> appSettings)
         {
+            _unitOfWork = unitOfWork;
             _appSettings = appSettings.Value;
         }
 
@@ -46,7 +48,20 @@ namespace Cookbook.Controllers
         [HttpGet]
         public IActionResult GetPreviews()
         {
-            var recipes = _unitOfWork.RecipeRepository.Get(includeProperties: "Tags,User");
+            IEnumerable<Recipe> recipes;
+
+            if (Request.QueryString.HasValue 
+                && Request.Query["userID"].Any() 
+                && int.TryParse(Request.Query["userID"], out int userID))
+            {
+                recipes = _unitOfWork.RecipeRepository
+                    .Get(r => r.UserID == userID, null, "Tags,User");
+            }
+            else
+            {
+                recipes = _unitOfWork.RecipeRepository.Get(includeProperties: "Tags,User");
+            }
+
             return Ok(recipes.Select(r => r.ToPreviewDTO()).ToList());
         }
 
@@ -84,7 +99,7 @@ namespace Cookbook.Controllers
                 _unitOfWork.RecipeRepository.Insert(recipe);
                 _unitOfWork.Save();
 
-                return Ok();
+                return Ok(recipe.RecipeID);
             }
             catch (Exception e)
             {

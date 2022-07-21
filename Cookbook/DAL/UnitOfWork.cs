@@ -2,6 +2,8 @@ using System;
 using Cookbook.DAL.Repositories;
 using Cookbook.Models;
 using Cookbook.DAL.DbInfrastructure;
+using Microsoft.Extensions.Options;
+using Cookbook.Settings;
 
 namespace Cookbook.DAL
 {
@@ -11,7 +13,13 @@ namespace Cookbook.DAL
         private CategoryRepository _categoryRepository;
         private UserRepository _userRepository;
         private RecipeRepository _recipeRepository;
+        private readonly AppSettings _appSettings;
         private bool _disposed = false;
+
+        public UnitOfWork(IOptions<AppSettings> appSettings)
+        {
+            _appSettings = appSettings.Value;
+        }
 
         public CategoryRepository CategoryRepository
         {
@@ -43,7 +51,7 @@ namespace Cookbook.DAL
             {
                 if (_recipeRepository == null)
                 {
-                    _recipeRepository = new RecipeRepository(_context);
+                    _recipeRepository = new RecipeRepository(_context, _appSettings);
                 }
                 return _recipeRepository;
             }

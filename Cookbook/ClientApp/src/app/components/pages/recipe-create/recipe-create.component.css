@@ -30,6 +30,17 @@
   background: linear-gradient(0deg, #FFEFCC, #FFEFCC), #FFFCF7;
 }
 
+.recipe-blank__image
+{
+  max-height: 430px;
+  max-width: 430px;
+  height: 100%;
+  width: 100%;
+
+  border-radius: 72px 0px;
+  object-fit: cover;
+}
+
 .upload-area
 {
   position: absolute;
@@ -70,7 +81,7 @@
   color: #F29E1F;
 }
 
-.upload-area:hover
+.recipe-blank_pic-upload:hover .upload-area
 {
   transform: scale(1.05);
 }

@@ -18,11 +18,12 @@ namespace Cookbook.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork;
         private readonly AppSettings _appSettings;
 
-        public UserController(IOptions<AppSettings> appSettings)
+        public UserController(UnitOfWork unitOfWork, IOptions<AppSettings> appSettings)
         {
+            _unitOfWork = unitOfWork;
             _appSettings = appSettings.Value;
         }
 

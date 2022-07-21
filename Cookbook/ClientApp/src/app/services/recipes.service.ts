@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { RecipeToLoad } from '../interfaces/recipe[DELETE]';
-import { RecipeDetails } from '../interfaces/recipe-details[DELETE]';
 import { Observable } from 'rxjs';
 import { Recipe, RecipePreview } from '../interfaces/recipe';
 import { RecipeDTO } from '../dtos/recipe-dto';
@@ -11,16 +9,14 @@ import { RecipeDTO } from '../dtos/recipe-dto';
   providedIn: 'root'
 })
 export class RecipesService {
-  private _recipesUrl = '../assets/data/recipes.json';
-
   constructor(
     private _http: HttpClient
   ) { }
 
-  getRecipePreviews(): Observable<RecipePreview[]> {
-    return this._http.get<RecipePreview[]>("api/recipe/GetPreviews");
+  getRecipePreviews(queryParams?: HttpParams): Observable<RecipePreview[]> {
+    return this._http.get<RecipePreview[]>("api/recipe/GetPreviews", { params: queryParams });
   }
-
+  
   getRecipeByID(id: number): Observable<Recipe> {
     return this._http.get<Recipe>(`api/recipe/${id}`);
   }

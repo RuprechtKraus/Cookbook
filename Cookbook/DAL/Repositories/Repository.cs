@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using Cookbook.DAL.DbInfrastructure;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace Cookbook.DAL.Repositories
 {
@@ -79,6 +80,7 @@ namespace Cookbook.DAL.Repositories
             {
                 _dbSet.Attach(entityToDelete);
             }
+
             _dbSet.Remove(entityToDelete);
         }
 

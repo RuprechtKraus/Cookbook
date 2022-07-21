@@ -14,10 +14,11 @@
 </div>
 
 <div class="recipe-blank">
-  <div id="image-area" class="recipe-blank_pic-upload">
+  <div id="image-area" class="recipe-blank_pic-upload" (click)="imageUpload.click()">
+    <img *ngIf="imageUploaded" class="recipe-blank__image" [src]="'data:image/jpg;base64,' + recipe.imageBase64">
     <input type="file" class="image-input" #imageUpload accept="image/jpeg, image/png"
-      (change)="imageUploaded($event)" />
-    <div class="upload-area" (click)="imageUpload.click()">
+      (change)="onImageUploaded($event)" />
+    <div *ngIf="!imageUploaded" class="upload-area">
       <object class="upload-area_icon" data="../../assets/icons/ic-upload.svg" type="image/svg+xml"></object>
       <div class="upload-area_text">Загрузите фото готового блюда</div>
     </div>

@@ -9,6 +9,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Cookbook.DAL.Repositories;
 using Microsoft.IdentityModel.Tokens;
+using Cookbook.DAL;
 
 namespace Cookbook
 {
@@ -70,6 +71,7 @@ namespace Cookbook
                 });
 
             services.AddScoped<UserRepository>();
+            services.AddScoped<UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

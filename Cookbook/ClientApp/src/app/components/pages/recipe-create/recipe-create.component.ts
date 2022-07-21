@@ -11,6 +11,7 @@ import { AccountService } from "src/app/services/account.service";
 import { ImageService } from "src/app/services/image.service";
 import { RecipesService } from "src/app/services/recipes.service";
 import { RecipeStep } from "src/app/interfaces/recipe-step";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-recipe-create",
@@ -22,6 +23,7 @@ export class RecipeCreateComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, SPACE] as const;
 
   canRemoveStep: boolean = false;
+  imageUploaded: boolean = false;
 
   timeOptions: TimeOption[] = [
     { value: 30, viewValue: "30" },
@@ -47,10 +49,12 @@ export class RecipeCreateComponent implements OnInit {
     userID: this._accountService.userValue.userID,
     user: this._accountService.userValue.login,
     ingredientsSections: [{ name: "", products: "" }],
-    recipeSteps: [{
-      stepIndex: 1,
-      description: ""
-    }],
+    recipeSteps: [
+      {
+        stepIndex: 1,
+        description: "",
+      },
+    ],
     tags: [],
     imageBase64: "",
   };
@@ -59,7 +63,8 @@ export class RecipeCreateComponent implements OnInit {
     private _locationService: LocationService,
     private _accountService: AccountService,
     private _imageService: ImageService,
-    private _recipeSerivce: RecipesService
+    private _recipeSerivce: RecipesService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -117,19 +122,22 @@ export class RecipeCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this._recipeSerivce
-      .createRecipe(this.recipe)
-      .subscribe((response) => console.log(response));
+    this._recipeSerivce.createRecipe(this.recipe).subscribe((recipeID) => {
+      alert("Рецепт успешно создан!");
+      this._router.navigate([`/recipes/${recipeID}`]);
+    });
   }
 
-  async imageUploaded(fileInput: any): Promise<void> {
+  async onImageUploaded(fileInput: any): Promise<void> {
     try {
       this.recipe.imageBase64 = await this._imageService.readImageAsBase64(
         fileInput.currentTarget.files?.item(0)
       );
     } catch (exception) {
       alert(exception);
+      return;
     }
+    this.imageUploaded = true;
   }
 
   trackByIndex(index: number, obj: any): number {

@@ -7,7 +7,12 @@ namespace Cookbook.Controllers
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork;
+
+        public CategoryController(UnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
 
         public IActionResult Index()
         {
